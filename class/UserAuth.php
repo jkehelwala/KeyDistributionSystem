@@ -13,4 +13,8 @@ abstract class UserAuth
     }
     abstract protected function verifyPrivilege($role);
     abstract public function getRequestViews();
+
+    protected function requestView(){
+        // Todo
+    }
 }

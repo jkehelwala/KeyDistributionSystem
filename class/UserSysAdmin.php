@@ -23,4 +23,8 @@ class UserSysAdmin extends UserAuth
     {
         // TODO the to-do items HTML for each user type
     }
+
+    public function getRequests(){
+
+    }
 }
