@@ -4,6 +4,7 @@
 
 1. Import db/keydist.sql.
 2. Set up a virtual host in apache. 
+    - This is done so that Document Root is "/" and files can be directly linked without ../ traversal)
     
     1. For windows and XAMPP
         1. Add following code at end of files.

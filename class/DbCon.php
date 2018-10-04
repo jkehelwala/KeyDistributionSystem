@@ -91,6 +91,8 @@ class DbCon
         return $this->con->lastInsertId();
     }
 
+    /************* Functions below needs revision. (Insecure Parameter Parsing, Refactor as functions above )*********/
+
     /*-------- General Query Result Return Functions --------*/
 
     /* Pass sql string as parameter, run query, return affected rows */
