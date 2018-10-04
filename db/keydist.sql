@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2018 at 03:09 PM
+-- Generation Time: Oct 04, 2018 at 10:39 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `accounts` (
   `u_id` int(11) NOT NULL,
   `u_name` varchar(30) NOT NULL,
-  `u_role` set('MachineUser','Administrator','SysAdmin') NOT NULL,
-  `u_pass` varchar(40) NOT NULL
+  `u_role` tinyint(1) NOT NULL,
+  `u_pass` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -112,31 +112,25 @@ ALTER TABLE `requests`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `accounts`
+-- Constraints for table `key_list`
 --
-ALTER TABLE `accounts`
-  ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `requests` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `accounts_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `requests` (`admin_u_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `accounts_ibfk_3` FOREIGN KEY (`u_id`) REFERENCES `notifications` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `machines`
---
-ALTER TABLE `machines`
-  ADD CONSTRAINT `machines_ibfk_1` FOREIGN KEY (`m_id`) REFERENCES `requests` (`m_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `key_list`
+  ADD CONSTRAINT `key_list_ibfk_1` FOREIGN KEY (`r_id`) REFERENCES `requests` (`r_id`);
 
 --
 -- Constraints for table `requests`
 --
 ALTER TABLE `requests`
-  ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`r_id`) REFERENCES `key_list` (`r_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `accounts` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`admin_u_id`) REFERENCES `accounts` (`u_id`),
+  ADD CONSTRAINT `requests_ibfk_3` FOREIGN KEY (`m_id`) REFERENCES `machines` (`m_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

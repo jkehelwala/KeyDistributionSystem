@@ -1,0 +1,21 @@
+.navbar-brand img{
+    max-height: 20px;
+    display: inline-block;
+}
+nav ul li span{
+	color: white;
+	line-height: 20px;
+	position: relative;
+	display: block;
+	padding: 15px 15px;
+}
+.top-padding{
+	margin-top: 100px;
+}
+
+footer{
+	margin-top: 50px;
+	padding: 20px;
+	border-top: 1px solid lightgray;
+}
+
