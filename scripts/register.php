@@ -1,5 +1,5 @@
 <?php
-include('../init/overhead.php');
+include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php');
 if (isset($_GET)) {
     $uname = $_GET['uname'];
     $pass = $_GET['pass'];

@@ -1,5 +1,5 @@
 <?php
-include('init/overhead.php');
+include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php');
 $title = 'Key Distribution'; //define page title
 ?>
     <!-- include header -->

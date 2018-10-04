@@ -13,7 +13,8 @@ class DbCon
 
     function __construct()
     {
-        $this->ini_loc = "C:/Software/xampp/htdocs/testsite/init/cred.ini";
+        # Must be set to absolute Path placed outside DOCUMENT_ROOT Todo
+        $this->ini_loc = realpath($_SERVER['DOCUMENT_ROOT']."/init/cred.ini");
     }
 
     public static function minimumPriv()

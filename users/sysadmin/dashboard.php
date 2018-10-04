@@ -1,4 +1,4 @@
-<?php include('../../init/overhead.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php'); ?>
 <?php
 $title = "System Administrator Dashboard";
 ?>

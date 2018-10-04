@@ -1,6 +1,6 @@
 <?php
 
-include('../init/overhead.php');
+include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php');
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
 $uname = htmlspecialchars($uname);

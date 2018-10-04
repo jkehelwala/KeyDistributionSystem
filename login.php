@@ -1,5 +1,5 @@
 <?php
-include('init/overhead.php');
+include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php');
 $title = 'Login';  // page title
 ?>
 <!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
