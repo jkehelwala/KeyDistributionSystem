@@ -8,9 +8,9 @@
 
 abstract class UserAuth
 {
-    function __construct() {
-       $this->verifyPrivilege();
+    function __construct($role) {
+       $this->verifyPrivilege($role);
     }
-    abstract protected function verifyPrivilege();
-    abstract protected function getRequests();
+    abstract protected function verifyPrivilege($role);
+    abstract public function getRequestViews();
 }

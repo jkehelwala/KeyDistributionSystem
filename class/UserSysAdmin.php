@@ -8,17 +8,19 @@
 
 class UserSysAdmin extends UserAuth
 {
-// No Constructor for the child class so that parent constructor is called! If implemented, must call parent!
-//    function __construct() {}
+    // If implemented, must call parent!
+    function __construct($role) {
+        parent::__construct($role);
+    }
 
-    protected function verifyPrivilege()
+    protected function verifyPrivilege($role)
     {
-        // TODO
+        // TODO check if the parent user is truly of SysAdmin type. Signature subject to change.
         // Function must be implmeneted in each subuser class to check priviledge before execution
     }
 
-    protected function getRequests()
+    public function getRequestViews()
     {
-        // TODO
+        // TODO the to-do items HTML for each user type
     }
 }
