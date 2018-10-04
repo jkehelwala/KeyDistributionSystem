@@ -12,17 +12,21 @@ session_start();
 if ($_GET) {
     if (array_key_exists('logout', $_GET)) {
         if ($_GET['logout']) {
+            session_unset();
             session_destroy();
             header('location: /index.php');
         }
     }
 }
-$logged = 0;
+
+$logged = false;
 $user = new User();
 if ($_SESSION) {
     if (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
         $logged = $user->loggedIn;
     }
+    if(!$logged)
+        header('location: /index.php?logout=1');
 }
 ?>

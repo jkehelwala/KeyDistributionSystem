@@ -39,8 +39,20 @@
 ### Temporary Hooks
 
 * Can register new users (for the time being) through following link
-    * www.testsite.test/scripts/register.php?uname=admin1&role=0&pass=admin
+    * http://testsite.test/scripts/register.php?uname=admin1&role=0&pass=admin
+    * Credentials
+
+            admin1      admin
+            machine1    machine
+            sysadmin1   sysadmin
+
 * For user role numbers, check class/UserRole.php.
+* For logout (Due to session redirection to homepage)
+    * http://testsite.test/index.php?logout=1
+
+### Lookout for
+* Public functions and variables, refactoring of JK's current classes to be done.
+
 
 ### Class structure
 

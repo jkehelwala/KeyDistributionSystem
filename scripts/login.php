@@ -12,6 +12,8 @@ try {
         $user->initializeUser();
         $_SESSION['user'] = $user;
         header('location: /users/'. $user->getPartition() . '/dashboard.php');
+    }else{
+        throw new Exception("Login failed.");
     }
 } catch (Exception $e) {
     echo $e->getMessage(); # Todo
