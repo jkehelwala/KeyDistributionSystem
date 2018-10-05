@@ -1,5 +1,7 @@
 # KeyDistributionSystem
 
+**Do not use the Temp branch except for browsing and code extraction. <br> Set up notes for Windows and Linux are at the end of this ReadMe.**
+
 ## Coding Notes
 
 * Check following before merging with master, and update your database accordingly
