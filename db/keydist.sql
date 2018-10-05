@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2018 at 05:56 AM
+-- Generation Time: Oct 05, 2018 at 07:06 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `requests` (
   `m_id` int(11) NOT NULL,
   `key_type` set('UserAccount','NewPublicKey','GuestPublicKey') NOT NULL,
   `admin_u_id` int(11) NOT NULL,
-  `admin_approved` tinyint(1) NOT NULL,
+  `admin_approved` tinyint(1) DEFAULT NULL,
   `key_issued` tinyint(1) NOT NULL,
   PRIMARY KEY (`r_id`),
   KEY `u_id` (`u_id`),
