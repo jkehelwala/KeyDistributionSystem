@@ -15,16 +15,24 @@ class UserSysAdmin extends UserAuth
 
     protected function verifyPrivilege($role)
     {
-        // TODO check if the parent user is truly of SysAdmin type. Signature subject to change.
-        // Function must be implmeneted in each subuser class to check priviledge before execution
+        if ($role != UserRole::SysAdmin)
+            throw new Exception("Operation Not Permitted");
     }
 
-    public function getRequestViews()
+    protected function setCapabilities()
     {
-        // TODO the to-do items HTML for each user type
+        $this->capabilities = [Capability::VIEW_MACHINES, Capability::VIEW_REQUESTS,
+            Capability::VIEW_APPROVED_REQUESTS, Capability::VIEW_MACHINE_AUTHORIZED_KEYS,
+            Capability::ENCRYPT_KEY, Capability::ADD_KEY];
     }
 
-    public function getRequests(){
+    public function getRequestsToProcess()
+    {
+        // TODO
+    }
 
+    protected function requestView()
+    {
+        // TODO Request object with allowed actions
     }
 }

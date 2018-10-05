@@ -8,13 +8,13 @@
 
 abstract class UserAuth
 {
+    protected $capabilities; //Array of Capabilities initiated with setCapabilities()
     function __construct($role) {
        $this->verifyPrivilege($role);
+       $this->setCapabilities();
     }
     abstract protected function verifyPrivilege($role);
-    abstract public function getRequestViews();
-
-    protected function requestView(){
-        // Todo
-    }
+    abstract protected function setCapabilities();
+    abstract protected function requestView();
+    abstract public function getRequestsToProcess();
 }
