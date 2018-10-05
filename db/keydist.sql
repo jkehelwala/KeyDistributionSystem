@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2018 at 06:48 PM
+-- Generation Time: Oct 05, 2018 at 05:56 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -70,6 +70,8 @@ CREATE TABLE IF NOT EXISTS `key_list` (
 CREATE TABLE IF NOT EXISTS `machines` (
   `m_id` int(11) NOT NULL AUTO_INCREMENT,
   `m_name` varchar(30) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `sys_admin_id` int(11) NOT NULL,
   PRIMARY KEY (`m_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -77,9 +79,9 @@ CREATE TABLE IF NOT EXISTS `machines` (
 -- Dumping data for table `machines`
 --
 
-INSERT INTO `machines` (`m_id`, `m_name`) VALUES
-(1, 'DockerVM'),
-(2, 'ProductionDB');
+INSERT INTO `machines` (`m_id`, `m_name`, `admin_id`, `sys_admin_id`) VALUES
+(1, 'DockerVM', 1, 3),
+(2, 'ProductionDB', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -99,19 +101,7 @@ CREATE TABLE IF NOT EXISTS `requests` (
   KEY `u_id` (`u_id`),
   KEY `admin_u_id` (`admin_u_id`),
   KEY `m_id` (`m_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `requests`
---
-ALTER TABLE `requests`
-  ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `accounts` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`admin_u_id`) REFERENCES `accounts` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `requests_ibfk_3` FOREIGN KEY (`m_id`) REFERENCES `machines` (`m_id`);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
