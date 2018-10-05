@@ -39,9 +39,12 @@
 * Admins can't view/edit keys.
 * SysAdmins can't view requesting user.  
 
-#### Diagram
+#### Class Diagram
 
-// TODO
+[Rough Draft PDF](db/class_diagram.pdf)
+
+If there are major structural changes to this, we'll update is as we go. 
+If not, we'll update it when the code is done.
 
 <hr>
 
