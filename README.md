@@ -1,5 +1,50 @@
 # KeyDistributionSystem
 
+## Coding Notes
+
+* Check following before merging with master, and update your database accordingly
+
+        git diff master origin/master db/ 
+
+### Temporary Hooks
+
+* Can register new users (for the time being) through following link
+    * http://testsite.test/scripts/register.php?uname=admin1&role=0&pass=admin
+    * Credentials
+
+            admin1      admin
+            machine1    machine
+            sysadmin1   sysadmin
+
+* For user role numbers, check class/UserRole.php.
+* For logout (Due to session redirection to homepage)
+    * http://testsite.test/index.php?logout=1
+
+### Class structure
+
+#### Coding Instructions
+* Public functions and variables, refactoring of JK's current classes to be done.
+* MVC architecture. Views in outer folders. Model in class folder. Control in scripts folder
+* UserAuth inheritance checks according to the user role whether the child class (which can actually perform functions) can be instantiated
+* Capabilities class holds what functions can be performed by which user. These are added in UserAuth sublcass to "capabilities" property. 
+* Capabilities property is passed to object functions (KeyRequest, Key add/edit/view etc) when called.
+* Each object function checks the Capabilities property whether it is allowed. (Enum value should be in Capabilities array)
+
+
+#### Restrictions
+**Certain properties are inaccessible to users, make minimum privilege based decisions when coding**
+
+* Requests should be added with Admin Approval column set to NULL. So if rejected it becomes 0, if approved it becomes 1. 
+* Regular users cant update requests, Only Add them.
+* Admins can't view/edit keys.
+* SysAdmins can't view requesting user.  
+
+#### Diagram
+
+// TODO
+
+<hr>
+
 ## Setup Notes
 
 1. Import db/keydist.sql.
@@ -32,28 +77,3 @@
 	1. For Linux
 	    * https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts
 
-<hr>
-
-## Coding Notes
-
-### Temporary Hooks
-
-* Can register new users (for the time being) through following link
-    * http://testsite.test/scripts/register.php?uname=admin1&role=0&pass=admin
-    * Credentials
-
-            admin1      admin
-            machine1    machine
-            sysadmin1   sysadmin
-
-* For user role numbers, check class/UserRole.php.
-* For logout (Due to session redirection to homepage)
-    * http://testsite.test/index.php?logout=1
-
-### Lookout for
-* Public functions and variables, refactoring of JK's current classes to be done.
-
-
-### Class structure
-
-// TODO
