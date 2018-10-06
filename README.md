@@ -53,6 +53,10 @@ If not, we'll update it when the code is done.
 ## Setup Notes
 
 1. Import db/keydist.sql.
+1. Update credentials at **init/cred.ini** and run following
+
+        git update-index --assume-unchanged init/cred.ini
+
 2. Set up a virtual host in apache. 
     - This is done so that Document Root is "/" and files can be directly linked without ../ traversal)
     

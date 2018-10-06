@@ -28,7 +28,17 @@ class UserSysAdmin extends UserAuth
 
     public function getRequestsToProcess()
     {
-        // TODO
+        if (!in_array(Capability::VIEW_APPROVED_REQUESTS, $this->capabilities))
+            throw new Exception("Operation Not Permitted");
+        $db = DbCon::minimumPriv();
+        $result = $db->getQueryResult("select r_id from requests where admin_approved=? and key_issued =?", [1,0]);
+        $keyRequests = array();
+        foreach ($result as $row) {
+            $req = new KeyRequest();
+            $req->initialize( $row['r_id']);
+            array_push($keyRequests, $req);
+        }
+        return $keyRequests;
     }
 
     protected function requestView()

@@ -6,7 +6,7 @@ class User
     public $loggedIn;
     protected $username;
     protected $role;
-    // protected $password;
+    // private $password;
 
     function __construct()
     {
@@ -19,12 +19,12 @@ class User
         $db = DbCon::minimumPriv();
         $pass_hash = hash('sha256', $password);
         $query = "SELECT count(*) FROM accounts WHERE u_name=? and u_pass=?";
-        $result = $db->getFirstRow($query, [$uname, $pass_hash]);
-        if ($result === false) {
+        $result = $db->getScalar($query, [$uname, $pass_hash]);
+        if ($result === false)
             throw new Exception("Login Failed.");
-        }
-        if ($result[0] != 1)
+        if ($result != 1)
             return false;
+        $this->loggedIn = true;
         $this->username = $uname;
         return true;
     }
@@ -35,7 +35,16 @@ class User
         $result = $db->getFirstRow("select u_id, u_role from accounts where u_name = ?", [$this->username]);
         $this->id = $result['u_id'];
         $this->role = $result['u_role'];
-        $this->loggedIn = true;
+//        $this->password = $result['u_pass'];
+    }
+
+    function initialize($id)
+    {
+        $db = DbCon::minimumPriv();
+        $result = $db->getFirstRow("select u_id, u_role, u_name from accounts where u_id = ?", [$id]);
+        $this->id = $result['u_id'];
+        $this->role = $result['u_role'];
+        $this->username = $result['u_name'];
 //        $this->password = $result['u_pass'];
     }
 
@@ -61,7 +70,7 @@ class User
 
         $db = DbCon::minimumPriv();
         $success = $db->runParamQuery($sql, $params);
-        if (!$success)
+        if ($success != 1)
             throw new Exception("Registration Unsuccessful");
 
         $user_id = $db->lastInsertID();
