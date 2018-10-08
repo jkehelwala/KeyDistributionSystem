@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2018 at 07:06 AM
+-- Generation Time: Oct 08, 2018 at 08:10 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -56,8 +56,9 @@ INSERT INTO `accounts` (`u_id`, `u_name`, `u_role`, `u_pass`) VALUES
 
 CREATE TABLE IF NOT EXISTS `key_list` (
   `r_id` int(11) NOT NULL,
-  `key` text NOT NULL,
+  `enc_key` text NOT NULL,
   `self_notes` varchar(300) NOT NULL,
+  `key_hash` varchar(16) NOT NULL,
   PRIMARY KEY (`r_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
