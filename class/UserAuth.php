@@ -6,15 +6,33 @@
  * Time: 3:55 PM
  */
 
-abstract class UserAuth
+abstract class UserAuth extends Permission
 {
-    protected $capabilities; //Array of Capabilities initiated with setCapabilities()
-    function __construct($role) {
+    protected $id;
+    function __construct($role, $id) {
+       parent::__construct([]);
        $this->verifyPrivilege($role);
+       $this->id = $id;
        $this->setCapabilities();
     }
+
+    public static function factory ($role, $id) {
+        $userAuth = NULL;
+        switch ($role){
+            case UserRole::SysAdmin:
+                $userAuth = new UserSysAdmin($role, $id);
+                break;
+            case UserRole::Administrator:
+                # Todo
+                break;
+            case UserRole::MachineUser:
+                # Todo
+                break;
+        }
+        return $userAuth;
+    }
+
     abstract protected function verifyPrivilege($role);
     abstract protected function setCapabilities();
-    abstract protected function requestView();
     abstract public function getRequestsToProcess();
 }

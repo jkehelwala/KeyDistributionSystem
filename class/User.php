@@ -6,6 +6,7 @@ class User
     public $loggedIn;
     protected $username;
     protected $role;
+    private $actions = NULL;
     // private $password;
 
     function __construct()
@@ -96,7 +97,18 @@ class User
         return $this->username;
     }
 
+    public function getActions()
+    {
+        if(!$this->loggedIn)
+            throw new Exception("User must be logged in");
+        if($this->actions === NULL)
+            $this->setActions();
+        return $this->actions;
+    }
 
+    public function setActions(){
+        $this->actions = UserAuth::factory($this->role, $this->id);
+    }
 }
 
 ?>

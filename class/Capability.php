@@ -19,6 +19,7 @@ abstract class Capability
     const VIEW_MACHINE_AUTHORIZED_KEYS = 21;
     const ENCRYPT_KEY = 22;
     const ADD_KEY = 23;
+    const ISSUE_KEY = 24;
 
     // ADMIN
     const ADD_MACHINE = 30;
