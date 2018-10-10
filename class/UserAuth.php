@@ -9,7 +9,7 @@
 abstract class UserAuth extends Permission
 {
     protected $id;
-    function __construct($role, $id) {
+    protected function __construct($role, $id) {
        parent::__construct([]);
        $this->verifyPrivilege($role);
        $this->id = $id;

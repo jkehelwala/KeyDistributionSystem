@@ -6,7 +6,7 @@
  * Time: 4:24 PM
  */
 
-class KeyRequest extends Permission
+final class KeyRequest extends Permission
 {
     public $id;
     public $requesting_user;

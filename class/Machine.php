@@ -6,7 +6,7 @@
  * Time: 11:41 PM
  */
 
-class Machine
+final class Machine
 {
     public $id, $machine_name, $administrator_id, $system_administrator_id;
 

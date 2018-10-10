@@ -6,7 +6,7 @@
  * Time: 6:13 PM
  */
 
-class MachineKey extends Crypts
+final class MachineKey extends Crypts
 {
     public $request_id;
     public $notes;

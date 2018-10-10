@@ -6,16 +6,11 @@ lastEdited: 2014-11-19
 by: JK;
 */
 
-class DbCon
+final class DbCon
 {
     private $con;
-    private $ini_loc;
 
-    function __construct()
-    {
-        # Must be set to absolute Path placed outside DOCUMENT_ROOT Todo
-        $this->ini_loc = realpath($_SERVER['DOCUMENT_ROOT']."/init/cred.ini");
-    }
+    function __construct(){}
 
     public static function minimumPriv()
     {
@@ -33,10 +28,10 @@ class DbCon
 
     protected function getReadPriv()
     {
-        $cred = parse_ini_file($this->ini_loc);
-        $role = "root"; # todo
+        $cred = Credentials::Instance([]);
         try {
-            $this->con = new PDO("mysql:host=". $cred["host"] . ";dbname=". $cred["db"] , $role, $cred[$role]);
+            $this->con = new PDO("mysql:host=". $cred->get(Credentials::HOST) . ";dbname=". $cred->get(Credentials::DB_NAME) ,
+                Credentials::ROLE_MIN_PRIV, $cred->get(Credentials::ROLE_MIN_PRIV));
         } catch (PDOException $pdoE) {
             throw new Exception("Could not connect to the database. " . $pdoE->getMessage());
         }
@@ -44,9 +39,10 @@ class DbCon
 
     protected function getSpecificPriv($role)
     {
-        $cred = parse_ini_file($this->ini_loc);
+        $cred = Credentials::Instance([]);
         try {
-            $this->con = new PDO("mysql:host=". $cred["host"] . ";dbname=". $cred["db"] , $role, $cred[$role]);
+            $this->con = new PDO("mysql:host=". $cred->get(Credentials::HOST) . ";dbname=". $cred->get(Credentials::DB_NAME) ,
+                $role, $cred->get($role));
         } catch (PDOException $pdoE) {
             throw new Exception("Could not connect to the database. " . $pdoE->getMessage());
         }

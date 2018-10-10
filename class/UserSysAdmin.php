@@ -6,7 +6,7 @@
  * Time: 4:00 PM
  */
 
-class UserSysAdmin extends UserAuth
+final class UserSysAdmin extends UserAuth
 {
     // If implemented, must call parent!
     function __construct($role, $id) {

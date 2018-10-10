@@ -1,6 +1,6 @@
 <?php
 
-class User
+final class User
 {
     public $id;
     public $loggedIn;

@@ -23,7 +23,14 @@ footer{
 	border-top: 1px solid lightgray;
 }
 
-.merge-block{ padding: 5px 2px; text-align: center; line-height: 30px; }
-.merge-block .top, .merge-block .bottom{border: 1px solid  rgb(245,245,245); padding: 5px;}
-.merge-block .top{ background-color:  rgb(245,245,245); font-size: 1.5em;  border-bottom: none; border-radius: 5px 5px 0 0;} /* */
-.merge-block .bottom{border-top: none; border-radius: 0 0 5px 5px;}
+ul.admin-menu li a{
+	border: 1px solid rgb(235,235,235);
+}
+
+.merge-block{ padding: 5px; text-align: center; line-height: 30px; }
+.merge-block div{padding: 5px; transition: background-color 50ms; }
+.merge-block:hover div{transition: background-color 50ms; }
+.merge-block .top{ background-color:  rgb(235,235,235);  font-size: 1.5em; border-radius: 5px 0 0 5px;} /* */
+.merge-block .bottom{ background-color: rgb(245,245,245); border-radius: 0 5px 5px 0;}
+.merge-block:hover .top{ background-color:  rgb(230,230,230);}
+.merge-block:hover .bottom{ background-color: rgb(240,240,240);}

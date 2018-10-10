@@ -6,19 +6,19 @@
  * Time: 10:34 PM
  */
 
-abstract class Permission
+class Permission
 {
     protected $capabilities;
-    function __construct($capabilities) {
+    protected function __construct($capabilities) {
         $this->capabilities = $capabilities;
     }
 
-    public function checkPermission($capability){
+    final protected function checkPermission($capability){
         if (!in_array($capability, $this->capabilities))
             throw new Exception("Operation Not Permitted");
     }
 
-    public function checkPermissions(){
+    final protected function checkPermissions(){
         $permissions = func_get_args();
         foreach($permissions as $permission){
             if (in_array($permission, $this->capabilities))
