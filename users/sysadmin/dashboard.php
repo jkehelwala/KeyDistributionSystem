@@ -16,27 +16,8 @@ $requests = $userAc->getRequestsToProcess();
                             <div class="panel-heading"><span class="panel-title">New Key Request</span>
                                 <span class="badge pull-right"><?php echo $keyReq->id; ?></span></div>
                             <div class="panel-body">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-xs-12 merge-block">
-                                            <div class="col-xs-12 top"><i class="fa fa-desktop"></i></div>
-                                            <div class="col-xs-12 bottom"><?php echo $keyReq->machine->machine_name; ?></div>
-                                        </div>
-                                        <div class="col-xs-12 merge-block">
-                                            <div class="col-xs-12 top"><i class="fa fa-key"></i></div>
-                                            <div class="col-xs-12 bottom"><?php echo $keyReq->key_type; ?></div>
-                                        </div>
-                                        <div class="col-xs-6 merge-block">
-                                            <div class="col-xs-12 top"><i class="fa fa-gavel"></i></div>
-                                            <div
-                                                    class="col-xs-12 bottom"><?php echo $keyReq->responding_admin->getUsername(); ?></div>
-                                        </div>
-                                        <div class="col-xs-6 merge-block">
-                                            <div class="col-xs-12 top"><i class="fa fa-user"></i></div>
-                                            <div
-                                                    class="col-xs-12 bottom"><?php echo $keyReq->requesting_user->getUsername(); ?></div>
-                                        </div>
-                                    </div>
+                                <div class="row">
+                                <?php include($path.'/users/sysadmin/snip_request.php'); ?>
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
@@ -46,10 +27,7 @@ $requests = $userAc->getRequestsToProcess();
                         </div>
                     </div>
                     <!-- Ending Request Block-->
-
-
                 <?php } ?>
-
             </div>
             <div class="col-xs-3">
                 <?php include($path .'/users/sysadmin/snip_menu.php'); ?>
@@ -57,4 +35,4 @@ $requests = $userAc->getRequestsToProcess();
         </div> <!-- /.row -->
     </section>
     <!-- include footer -->
-<?php include('../../init_html/footer.php'); ?>
+<?php include($path.'/init_html/footer.php'); ?>
