@@ -7,6 +7,8 @@
  */
 
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
+$user->authorizeView(UserRole::SysAdmin);
+
 $request_id = NULL;
 if (!$_GET)
     throw new Exception("Required variables not set");

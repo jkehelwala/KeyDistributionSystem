@@ -79,6 +79,12 @@ final class User
         return $user_id;
     }
 
+    public function authorizeView($view_owner)
+    {
+        if (!$this->loggedIn || $this->getRole()!=$view_owner)
+            throw new Exception("Access Denied");
+    }
+
     public function getRole()
     {
         return $this->role;

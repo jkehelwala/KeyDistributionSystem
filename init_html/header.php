@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?></title>
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
     <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- Bootstrap -->
     <link href="/css/styles.css" rel="stylesheet">
 </head>
@@ -23,6 +23,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <?php if ($logged) { ?>
                         <li><span>Welcome, <strong><?php echo $user->getUsername() ?>!</strong></span></li>
+                        <li><a href="/users/<?php echo $user->getPartition() ?>/dashboard.php">Dashboard</a></li>
                         <li><a href="/index.php?logout=1">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="/login.php">Login</a></li>

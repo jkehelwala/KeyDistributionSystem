@@ -1,4 +1,5 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
+<?php $user->authorizeView(UserRole::SysAdmin) ;?>
 <?php
 $title = "System Administrator Dashboard";
 $userAc = $user->getActions();
