@@ -1,4 +1,5 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
+<?php try { ?>
 <?php $user->authorizeView(UserRole::SysAdmin) ;?>
 <?php
 $title = "System Administrator Dashboard";
@@ -14,7 +15,7 @@ $requests = $userAc->getRequestsToProcess();
                     <div class="col-xs-4">
                         <!-- Starting Request Block-->
                         <div class="panel panel-primary">
-                            <div class="panel-heading"><span class="panel-title">New Key Request</span>
+                            <div class="panel-heading"><span class="panel-title"><i class="fa fa-envelope"></i> &nbsp;&nbsp; Key Request</span>
                                 <span class="badge pull-right"><?php echo $keyReq->id; ?></span></div>
                             <div class="panel-body">
                                 <div class="row">
@@ -37,3 +38,9 @@ $requests = $userAc->getRequestsToProcess();
     </section>
     <!-- include footer -->
 <?php include($path . '/init_html/footer.php'); ?>
+<?php
+} catch (Exception $e) {
+    $_SESSION['msg'] = new AlertMessage(true, $e);
+    header('location: /index.php?logout=1');
+}
+?>

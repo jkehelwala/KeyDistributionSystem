@@ -8,13 +8,20 @@ foreach (glob($path . "/class/*.php") as $filename) {
     });
 }
 session_start();
+$message = null;
+if ($_SESSION && isset($_SESSION['msg'])) {
+    $message = $_SESSION['msg'];
+}
 
 if ($_GET) {
     if (array_key_exists('logout', $_GET)) {
         if ($_GET['logout']) {
             session_unset();
             session_destroy();
+            session_start();
+            $_SESSION['msg'] = $message;
             header('location: /index.php');
+            exit();
         }
     }
 }
@@ -26,7 +33,8 @@ if ($_SESSION) {
         $user = $_SESSION['user'];
         $logged = $user->loggedIn;
     }
-    if (!$logged)
-        header('location: /index.php?logout=1');
+    unset($_SESSION['msg']);
 }
+//    if (!$logged)
+//        header('location: /index.php?logout=1');
 ?>

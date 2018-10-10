@@ -7,6 +7,7 @@
  */
 
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
+try{
 $user->authorizeView(UserRole::SysAdmin);
 
 $request_id = NULL;
@@ -32,4 +33,9 @@ $maintenance_data = $_POST['note'];
 $success = $user->getActions()->addKey($valid_req->id, $key_data, $maintenance_data);
 if ($success != 1)
     throw new Exception("Key Adding Unsuccessful");
+    $message = new AlertMessage(false, "Key Adding Successful");
+}catch (Exception $e){
+    $message = new AlertMessage(true, $e);
+}
+$_SESSION['msg']  = $message;
 header('location: /users/' . $user->getPartition() . '/dashboard.php');

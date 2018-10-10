@@ -79,6 +79,10 @@ final class User
         return $user_id;
     }
 
+    public function getDashboardLink(){
+        return '/users/' . $this->getPartition() . '/dashboard.php';
+    }
+
     public function authorizeView($view_owner)
     {
         if (!$this->loggedIn || $this->getRole()!=$view_owner)

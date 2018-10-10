@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <?php if ($logged) { ?>
                         <li><span>Welcome, <strong><?php echo $user->getUsername() ?>!</strong></span></li>
-                        <li><a href="/users/<?php echo $user->getPartition() ?>/dashboard.php">Dashboard</a></li>
+                        <li><a href="<?php echo $user->getDashboardLink(); ?>">Dashboard</a></li>
                         <li><a href="/index.php?logout=1">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="/login.php">Login</a></li>
@@ -37,3 +37,19 @@
     </div> -->
 </header><!-- Header end, Wrapper Start -->
 <div class="container">
+    <?php if($message != null){ ?>
+        <div class="col-xs-12">
+            <div class="col-xs-10 col-xs-offset-1">
+                <?php if($message->isError()){ ?>
+                    <div class="alert alert-danger text-center">
+                        <strong><i class="fa fa-times"></i></strong> &nbsp;&nbsp; <?php echo $message->getMessage(); ?>
+                    </div>
+                <?php } else { ?>
+                    <div class="alert alert-success text-center">
+                        <strong><i class="fa fa-check"></i></strong> &nbsp;&nbsp; <?php echo $message->getMessage(); ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    <?php } ?>
+    <?php $message = null ; ?>

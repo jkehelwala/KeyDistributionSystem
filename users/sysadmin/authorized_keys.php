@@ -1,4 +1,5 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
+<?php try { ?>
 <?php $user->authorizeView(UserRole::SysAdmin) ;?>
 <?php
 $title = "System Administrator Dashboard";
@@ -43,3 +44,9 @@ $machines = $userAc->getAuthorizedMachines();
     </section>
     <!-- include footer -->
 <?php include($path . '/init_html/footer.php'); ?>
+<?php
+} catch (Exception $e) {
+    $_SESSION['msg'] = new AlertMessage(true, $e);
+    header('location: '. $user->getDashboardLink());
+}
+?>

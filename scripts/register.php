@@ -14,10 +14,10 @@ $user = new User();
 try {
     $result = $user->registration($uname, $pass, $role_int);
     if ($result > 0)
-        echo "Registration Successful.";
+        $_SESSION['msg'] = new AlertMessage(false, "Registration Successful.");
 } catch (Exception $e) {
-    echo $e->getMessage();
-    echo "Registration Error. Please try again.";
+        $_SESSION['msg'] = new AlertMessage(true, $e);
 }
+header('location: /');
 
 ?>

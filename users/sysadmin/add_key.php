@@ -7,6 +7,7 @@
  */
 
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
+try{
 $user->authorizeView(UserRole::SysAdmin);
 
 $request_id = NULL;
@@ -76,5 +77,11 @@ $title = "Add Key";
 </section>
 <!-- include footer -->
 <?php include($path . '/init_html/footer.php'); ?>
+<?php
+} catch (Exception $e) {
+    $_SESSION['msg'] = new AlertMessage(true, $e);
+    header('location: '. $user->getDashboardLink());
+}
+?>
 
 

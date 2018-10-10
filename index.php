@@ -1,8 +1,11 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
 // Redirect Logged in User
-if ($user->loggedIn)
+if ($user->loggedIn){
     header('location: /users/' . $user->getPartition() . '/dashboard.php');
+    exit();
+}
+
 
 $title = 'Key Distribution'; //define page title
 ?>

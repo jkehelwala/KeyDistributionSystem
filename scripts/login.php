@@ -12,12 +12,13 @@ try {
         $user->initializeUser();
         $_SESSION['user'] = $user;
         header('location: /users/' . $user->getPartition() . '/dashboard.php');
+        exit();
     } else {
         throw new Exception("Login failed.");
     }
 } catch (Exception $e) {
-    echo $e->getMessage(); # Todo Prevent Printing
-    echo "Login Error. Please try again.";
+    $_SESSION['msg'] = new AlertMessage(true, $e);
+    header('location: /login.php');
 }
 
 ?>
