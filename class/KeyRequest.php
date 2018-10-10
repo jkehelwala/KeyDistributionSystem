@@ -30,8 +30,8 @@ final class KeyRequest extends Permission
         $this->requesting_user->initialize($result['u_id']);
         $this->responding_admin = new User();
         $this->responding_admin->initialize($result['admin_u_id']);
-        $this->machine = new Machine();
-        $this->machine->initialize($result['m_id']);
+        $this->machine = new Machine($this->capabilities, $result['m_id']);
+        $this->machine->initialize();
 
         $this->key_type = $result['key_type'];
         $this->approved = $result['admin_approved'];
@@ -47,6 +47,15 @@ final class KeyRequest extends Permission
         if ($success != 1)
             throw new Exception("Could not update request");
         return true;
+    }
+
+    function getIssuedKey(){
+        if(!$this->issued)
+            throw new Exception("Request Invalid");
+        $this->checkPermission(Capability::VIEW_MACHINE_AUTHORIZED_KEYS);
+        $key = new MachineKey($this->capabilities, $this->id);
+        $key->initialize();
+        return $key;
     }
 
 }

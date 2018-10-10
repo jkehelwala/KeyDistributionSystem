@@ -48,12 +48,8 @@ final class UserSysAdmin extends UserAuth
     public function getAccessibleRequest($id)
     {
         $req = $this->getRequest($id);
-        if ($this->id != $req->machine->system_administrator_id || !$req->approved || $req->issued) {
-            echo boolval($this->id != $req->machine->system_administrator_id);
-            echo boolval(!$req->approved);
-            echo boolval($req->issued);
+        if ($this->id != $req->machine->system_administrator_id || !$req->approved || $req->issued)
             throw new Exception("Operation Not Permitted");
-        }
         return $req;
     }
 
@@ -67,6 +63,24 @@ final class UserSysAdmin extends UserAuth
         if(!$success)
             throw new Exception("Operation Failed.");
         return $success;
+    }
+
+    private function getMachine($id){
+        $this->checkPermission(Capability::VIEW_MACHINES);
+        $machine = new Machine($this->capabilities, $id);
+        $machine->initialize();
+        return $machine;
+    }
+
+    public function getAuthorizedMachines(){
+        $this->checkPermission(Capability::VIEW_MACHINES);
+        $db = DbCon::minimumPriv();
+        $result = $db->getQueryResult("select m_id from machines where sys_admin_id =?", [$this->id]);
+        $machines = array();
+        foreach ($result as $row) {
+            array_push($machines, $this->getMachine($row['m_id']));
+        }
+        return $machines;
     }
 
 }
