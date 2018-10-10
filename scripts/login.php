@@ -11,7 +11,7 @@ try {
     if ($result) {
         $user->initializeUser();
         $_SESSION['user'] = $user;
-        header('location: ' .  $user->getDashboardLink());
+        header('location: ' . $user->getDashboardLink());
         exit();
     } else {
         throw new Exception("Login failed.");

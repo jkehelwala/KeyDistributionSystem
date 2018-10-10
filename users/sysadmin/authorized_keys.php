@@ -1,12 +1,12 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
 <?php try { ?>
-<?php $user->authorizeView(UserRole::SysAdmin) ;?>
-<?php
-$title = "System Administrator Dashboard";
-$userAc = $user->getActions();
-$machines = $userAc->getAuthorizedMachines();
-?>
-<?php include($path . '/init_html/header.php'); ?>
+    <?php $user->authorizeView(UserRole::SysAdmin); ?>
+    <?php
+    $title = "System Administrator Dashboard";
+    $userAc = $user->getActions();
+    $machines = $userAc->getAuthorizedMachines();
+    ?>
+    <?php include($path . '/init_html/header.php'); ?>
     <section><h3><?php echo $user->getRoleName() ?> Actions</h3></section>
     <section class="semi-top-padding">
         <div class="row">
@@ -43,10 +43,10 @@ $machines = $userAc->getAuthorizedMachines();
         </div> <!-- /.row -->
     </section>
     <!-- include footer -->
-<?php include($path . '/init_html/footer.php'); ?>
-<?php
+    <?php include($path . '/init_html/footer.php'); ?>
+    <?php
 } catch (Exception $e) {
     $_SESSION['msg'] = new AlertMessage(true, $e);
-    header('location: '. $user->getDashboardLink());
+    header('location: ' . $user->getDashboardLink());
 }
 ?>

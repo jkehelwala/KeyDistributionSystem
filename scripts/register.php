@@ -16,7 +16,7 @@ try {
     if ($result > 0)
         $_SESSION['msg'] = new AlertMessage(false, "Registration Successful.");
 } catch (Exception $e) {
-        $_SESSION['msg'] = new AlertMessage(true, $e);
+    $_SESSION['msg'] = new AlertMessage(true, $e);
 }
 header('location: /');
 
