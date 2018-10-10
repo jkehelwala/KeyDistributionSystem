@@ -9,7 +9,11 @@
 // Todo remove file
 include $_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php';
 
-$keys = new class extends Crypts{
-    function __construct(){parent::__construct([Capability::DECRYPT_AUTHORIZED_KEY]);}
+$keys = new class extends Crypts
+{
+    function __construct()
+    {
+        parent::__construct([Capability::DECRYPT_AUTHORIZED_KEY]);
+    }
 };
 echo $keys->generateKeys();

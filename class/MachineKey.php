@@ -30,7 +30,8 @@ final class MachineKey extends Crypts
         $this->crypt_key = $this->encrypt($plain_text);
     }
 
-    function initialize(){
+    function initialize()
+    {
         $this->checkPermissions(Capability::VIEW_KEY_FOR_REQUEST, Capability::VIEW_MACHINE_AUTHORIZED_KEYS);
         $db = DbCon::minimumPriv();
         $result = $db->getFirstRow("select enc_key, self_notes, key_hash from key_list where r_id = ?", [$this->request_id]);

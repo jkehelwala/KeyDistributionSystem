@@ -10,7 +10,9 @@ final class DbCon
 {
     private $con;
 
-    function __construct(){}
+    function __construct()
+    {
+    }
 
     public static function minimumPriv()
     {
@@ -30,7 +32,7 @@ final class DbCon
     {
         $cred = Credentials::Instance([]);
         try {
-            $this->con = new PDO("mysql:host=". $cred->get(Credentials::HOST) . ";dbname=". $cred->get(Credentials::DB_NAME) ,
+            $this->con = new PDO("mysql:host=" . $cred->get(Credentials::HOST) . ";dbname=" . $cred->get(Credentials::DB_NAME),
                 Credentials::ROLE_MIN_PRIV, $cred->get(Credentials::ROLE_MIN_PRIV));
         } catch (PDOException $pdoE) {
             throw new Exception("Could not connect to the database. " . $pdoE->getMessage());
@@ -41,14 +43,13 @@ final class DbCon
     {
         $cred = Credentials::Instance([]);
         try {
-            $this->con = new PDO("mysql:host=". $cred->get(Credentials::HOST) . ";dbname=". $cred->get(Credentials::DB_NAME) ,
+            $this->con = new PDO("mysql:host=" . $cred->get(Credentials::HOST) . ";dbname=" . $cred->get(Credentials::DB_NAME),
                 $role, $cred->get($role));
         } catch (PDOException $pdoE) {
             throw new Exception("Could not connect to the database. " . $pdoE->getMessage());
         }
     }
 
-    // Destructor - Close Connection
     function __destruct()
     {
         unset($this->con);
@@ -80,21 +81,22 @@ final class DbCon
     {
         $result = $this->con->prepare($sqlstring);
         $success = $result->execute($params);
-        if ($success === false){
+        if ($success === false) {
             $this->error($result);
             return false;
         }
         return $result->fetchColumn();
     }
 
-    private function error($result){
-        print_r($result->errorInfo()); // Todo
+    private function error($result)
+    {
+        print_r($result->errorInfo()); // Todo Prevent Printing
     }
 
-    private function rowCount($result){
-        print_r($result->rowCount()); // Todo
+    private function rowCount($result)
+    {
+        print_r($result->rowCount());
     }
-
 
     function lastInsertID()
     {
@@ -112,12 +114,10 @@ final class DbCon
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    
     function escapeString($sqlPara)
     {
         return addcslashes($this->con->quote($sqlPara), '%_');
     }
-
 
 }
 

@@ -1,40 +1,78 @@
-.navbar-brand img{
+.navbar-brand img {
     max-height: 20px;
     display: inline-block;
 }
-nav ul li span{
-	color: white;
-	line-height: 20px;
-	position: relative;
-	display: block;
-	padding: 15px 15px;
-}
-.top-padding{
-	margin-top: 100px;
+
+nav ul li span {
+    color: white;
+    line-height: 20px;
+    position: relative;
+    display: block;
+    padding: 15px 15px;
 }
 
-.semi-top-padding{
-	margin-top: 50px;
+.top-padding {
+    margin-top: 100px;
 }
 
-footer{
-	margin-top: 50px;
-	padding: 20px;
-	border-top: 1px solid lightgray;
+.semi-top-padding {
+    margin-top: 50px;
 }
 
-ul.admin-menu li a{
-	border: 1px solid rgb(235,235,235);
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 1px solid lightgray;
 }
 
-.merge-block{ padding: 5px; text-align: center; line-height: 30px; }
-.merge-block .top, .merge-block .bottom{padding: 5px; transition: background-color 50ms; }
-.merge-block:hover .top,.merge-block:hover .bottom{transition: background-color 50ms; }
-.merge-block .top{ background-color:  rgb(235,235,235);  font-size: 1.5em; border-radius: 5px 0 0 5px;} /* */
-.merge-block .bottom{ background-color: rgb(245,245,245); border-radius: 0 5px 5px 0;}
-.merge-block:hover .top{ background-color:  rgb(230,230,230);}
-.merge-block:hover .bottom{ background-color: rgb(240,240,240);}
+ul.admin-menu li a {
+    border: 1px solid rgb(235, 235, 235);
+}
 
-.merge-block .top.full{  border-radius: 5px 5px 0 0 ;}
-.merge-block .top.full.title{ padding: 10px ; font-size: 1.2em; }
-.merge-block .bottom.full{ border-radius: 0 0 5px 5px ;}
+.merge-block {
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.merge-block .top, .merge-block .bottom {
+    padding: 5px;
+    transition: background-color 50ms;
+}
+
+.merge-block:hover .top, .merge-block:hover .bottom {
+    transition: background-color 50ms;
+}
+
+.merge-block .top {
+    background-color: rgb(235, 235, 235);
+    font-size: 1.5em;
+    border-radius: 5px 0 0 5px;
+}
+
+/* */
+.merge-block .bottom {
+    background-color: rgb(245, 245, 245);
+    border-radius: 0 5px 5px 0;
+}
+
+.merge-block:hover .top {
+    background-color: rgb(230, 230, 230);
+}
+
+.merge-block:hover .bottom {
+    background-color: rgb(240, 240, 240);
+}
+
+.merge-block .top.full {
+    border-radius: 5px 5px 0 0;
+}
+
+.merge-block .top.full.title {
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.merge-block .bottom.full {
+    border-radius: 0 0 5px 5px;
+}

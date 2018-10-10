@@ -4,7 +4,7 @@ $title = "System Administrator Dashboard";
 $userAc = $user->getActions();
 $machines = $userAc->getAuthorizedMachines();
 ?>
-<?php include($path .'/init_html/header.php'); ?>
+<?php include($path . '/init_html/header.php'); ?>
     <section><h3><?php echo $user->getRoleName() ?> Actions</h3></section>
     <section class="semi-top-padding">
         <div class="row">
@@ -18,12 +18,12 @@ $machines = $userAc->getAuthorizedMachines();
                                 <span class="badge pull-right"><?php echo $machine->id; ?></span>
                             </div>
                             <div class="col-xs-12 bottom full">
-                                <?php $requests =  $machine->getKeyIssuedRequests() ?>
+                                <?php $requests = $machine->getKeyIssuedRequests() ?>
                                 <?php if (count($requests) == 0) { ?>
                                     <div class="col-xs-12 merge-block">
                                         <div class="bottom">No Issued Keys</div>
                                     </div>
-                                <?php } else{  ?>
+                                <?php } else { ?>
                                     <?php foreach ($requests as $keyReq) { ?>
                                         <?php $issuedKey = $keyReq->getIssuedKey(); ?>
                                         <?php include($path . '/users/sysadmin/snip_issued_key.php'); ?>
@@ -36,9 +36,9 @@ $machines = $userAc->getAuthorizedMachines();
                 <?php } ?>
             </div>
             <div class="col-xs-3">
-                <?php include($path .'/users/sysadmin/snip_menu.php'); ?>
+                <?php include($path . '/users/sysadmin/snip_menu.php'); ?>
             </div>
         </div> <!-- /.row -->
     </section>
     <!-- include footer -->
-<?php include($path.'/init_html/footer.php'); ?>
+<?php include($path . '/init_html/footer.php'); ?>

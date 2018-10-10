@@ -22,8 +22,9 @@
             </div>
             <div class="col-xs-12">
                 <div class="col-xs-12 merge-block">
-                    <div class="col-xs-12 top full title"><i class="fa fa-sticky-note"></i> &nbsp;&nbsp; <span class="small"> Maintenance Notes </span> </div>
-                    <div class="col-xs-12 bottom full"><?php echo $issuedKey->notes;?></div>
+                    <div class="col-xs-12 top full title"><i class="fa fa-sticky-note"></i> &nbsp;&nbsp; <span
+                                class="small"> Maintenance Notes </span></div>
+                    <div class="col-xs-12 bottom full"><?php echo $issuedKey->notes; ?></div>
                 </div>
             </div>
         </div>

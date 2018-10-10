@@ -7,6 +7,7 @@ final class User
     protected $username;
     protected $role;
     private $actions = NULL;
+
     // private $password;
 
     function __construct()
@@ -88,7 +89,8 @@ final class User
         return UserRole::OUTPUT[$this->role];
     }
 
-    public function getPartition(){
+    public function getPartition()
+    {
         return UserRole::PARTITIONS[$this->role];
     }
 
@@ -99,14 +101,15 @@ final class User
 
     public function getActions()
     {
-        if(!$this->loggedIn)
+        if (!$this->loggedIn)
             throw new Exception("User must be logged in");
-        if($this->actions === NULL)
+        if ($this->actions === NULL)
             $this->setActions();
         return $this->actions;
     }
 
-    public function setActions(){
+    public function setActions()
+    {
         $this->actions = UserAuth::factory($this->role, $this->id);
     }
 }

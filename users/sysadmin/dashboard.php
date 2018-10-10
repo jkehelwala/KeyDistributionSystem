@@ -4,7 +4,7 @@ $title = "System Administrator Dashboard";
 $userAc = $user->getActions();
 $requests = $userAc->getRequestsToProcess();
 ?>
-<?php include($path .'/init_html/header.php'); ?>
+<?php include($path . '/init_html/header.php'); ?>
     <section><h3><?php echo $user->getRoleName() ?> Dashboard</h3></section>
     <section class="semi-top-padding">
         <div class="row">
@@ -17,7 +17,7 @@ $requests = $userAc->getRequestsToProcess();
                                 <span class="badge pull-right"><?php echo $keyReq->id; ?></span></div>
                             <div class="panel-body">
                                 <div class="row">
-                                <?php include($path.'/users/sysadmin/snip_request.php'); ?>
+                                    <?php include($path . '/users/sysadmin/snip_request.php'); ?>
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
@@ -30,9 +30,9 @@ $requests = $userAc->getRequestsToProcess();
                 <?php } ?>
             </div>
             <div class="col-xs-3">
-                <?php include($path .'/users/sysadmin/snip_menu.php'); ?>
+                <?php include($path . '/users/sysadmin/snip_menu.php'); ?>
             </div>
         </div> <!-- /.row -->
     </section>
     <!-- include footer -->
-<?php include($path.'/init_html/footer.php'); ?>
+<?php include($path . '/init_html/footer.php'); ?>

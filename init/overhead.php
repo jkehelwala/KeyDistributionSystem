@@ -26,7 +26,7 @@ if ($_SESSION) {
         $user = $_SESSION['user'];
         $logged = $user->loggedIn;
     }
-    if(!$logged)
+    if (!$logged)
         header('location: /index.php?logout=1');
 }
 ?>

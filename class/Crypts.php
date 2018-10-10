@@ -20,19 +20,21 @@ class Crypts extends Permission
             throw new Exception("Invalid Cipher Suite");
         $cred = Credentials::Instance($capabilities);
         $this->key = hex2bin($cred->get(Credentials::AES_KEY));
-        $this->iv =  hex2bin($cred->get(Credentials::INITIALIZATION_VECTOR));
+        $this->iv = hex2bin($cred->get(Credentials::INITIALIZATION_VECTOR));
     }
 
-    final protected function encrypt($plaintext){
+    final protected function encrypt($plaintext)
+    {
         $this->checkPermission(Capability::ENCRYPT_KEY);
-        $ciphertext = openssl_encrypt($plaintext, Crypts::CIPHER, $this->key, $options=0, $this->iv, $tag);
+        $ciphertext = openssl_encrypt($plaintext, Crypts::CIPHER, $this->key, $options = 0, $this->iv, $tag);
         $this->tag = $tag;
         return $ciphertext;
     }
 
-    final protected function decrypt($ciphertext){
+    final protected function decrypt($ciphertext)
+    {
         $this->checkPermission(Capability::DECRYPT_AUTHORIZED_KEY);
-        $plaintext = openssl_decrypt($ciphertext, Crypts::CIPHER,  $this->key, $options=0, $this->iv, hex2bin($this->tag));
+        $plaintext = openssl_decrypt($ciphertext, Crypts::CIPHER, $this->key, $options = 0, $this->iv, hex2bin($this->tag));
         return $plaintext;
     }
 
@@ -48,9 +50,10 @@ class Crypts extends Permission
         $this->tag = bin2hex($tag);
     }
 
-    final public function generateKeys(){
+    final public function generateKeys()
+    {
         $strong = true;
-        $key = openssl_random_pseudo_bytes ( openssl_cipher_iv_length(Crypts::CIPHER), $strong );
+        $key = openssl_random_pseudo_bytes(openssl_cipher_iv_length(Crypts::CIPHER), $strong);
         return bin2hex($key);
     }
 

@@ -22,7 +22,8 @@ final class KeyRequest extends Permission
         $this->id = $request_id;
     }
 
-    function initialize(){
+    function initialize()
+    {
         $this->checkPermission(Capability::VIEW_REQUESTS);
         $db = DbCon::minimumPriv();
         $result = $db->getFirstRow("select u_id, m_id, key_type, admin_u_id, admin_approved, key_issued from requests where r_id = ?", [$this->id]);
@@ -38,7 +39,8 @@ final class KeyRequest extends Permission
         $this->issued = $result['key_issued'];
     }
 
-    function issueKey(){
+    function issueKey()
+    {
         $this->checkPermission(Capability::ISSUE_KEY);
         $sql = "UPDATE requests SET key_issued=? WHERE r_id = ? and key_issued=? and admin_approved=?";
         $params = [1, $this->id, 0, 1];
@@ -49,8 +51,9 @@ final class KeyRequest extends Permission
         return true;
     }
 
-    function getIssuedKey(){
-        if(!$this->issued)
+    function getIssuedKey()
+    {
+        if (!$this->issued)
             throw new Exception("Request Invalid");
         $this->checkPermission(Capability::VIEW_MACHINE_AUTHORIZED_KEYS);
         $key = new MachineKey($this->capabilities, $this->id);

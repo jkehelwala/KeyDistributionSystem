@@ -1,13 +1,13 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
 // Redirect Logged in User
-if($user->loggedIn)
-    header('location: /users/'. $user->getPartition() . '/dashboard.php');
+if ($user->loggedIn)
+    header('location: /users/' . $user->getPartition() . '/dashboard.php');
 
 $title = 'Key Distribution'; //define page title
 ?>
     <!-- include header -->
-    <?php include('init_html/header.php'); ?>
+<?php include('init_html/header.php'); ?>
 
     <section class="top-padding"></section>
     <section>
@@ -23,4 +23,4 @@ $title = 'Key Distribution'; //define page title
         </div> <!-- /.row -->
     </section>
     <!-- include footer -->
-    <?php include('init_html/footer.php'); ?>
+<?php include('init_html/footer.php'); ?>

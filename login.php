@@ -1,9 +1,9 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/init/overhead.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
 $title = 'Login';  // page title
 ?>
-<!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
-    <?php include('init_html/header.php'); ?>
+    <!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
+<?php include('init_html/header.php'); ?>
     <!---------------------------------------- Add Page Edits Below ----------------------------------------------- -->
     <section class="top-padding"></section>
     <section id="login">

@@ -9,16 +9,19 @@
 abstract class UserAuth extends Permission
 {
     protected $id;
-    protected function __construct($role, $id) {
-       parent::__construct([]);
-       $this->verifyPrivilege($role);
-       $this->id = $id;
-       $this->setCapabilities();
+
+    protected function __construct($role, $id)
+    {
+        parent::__construct([]);
+        $this->verifyPrivilege($role);
+        $this->id = $id;
+        $this->setCapabilities();
     }
 
-    public static function factory ($role, $id) {
+    public static function factory($role, $id)
+    {
         $userAuth = NULL;
-        switch ($role){
+        switch ($role) {
             case UserRole::SysAdmin:
                 $userAuth = new UserSysAdmin($role, $id);
                 break;
@@ -33,6 +36,8 @@ abstract class UserAuth extends Permission
     }
 
     abstract protected function verifyPrivilege($role);
+
     abstract protected function setCapabilities();
+
     abstract public function getRequestsToProcess();
 }
