@@ -43,10 +43,9 @@
 
 #### Class Diagram
 
-[Rough Draft PDF](db/class_diagram.pdf)
+![ClassDiagram](https://raw.githubusercontent.com/jkehelwala/KeyDistributionSystem/master/db/ClassDiagram.png)
 
-If there are major structural changes to this, we'll update is as we go. 
-If not, we'll update it when the code is done.
+The methods/classes in Red are left to be implemented, along with their UI functionality.
 
 <hr>
 
