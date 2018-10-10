@@ -123,6 +123,7 @@ final class User
     {
         if (!$this->loggedIn)
             throw new Exception("User must be logged in");
+        // If user object is not logged in, allowed actions can't be obtained.
         if ($this->actions === NULL)
             $this->setActions();
         return $this->actions;
