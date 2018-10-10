@@ -2,8 +2,8 @@
 $active_url = $_SERVER['PHP_SELF'];
 $menu_links = array(
     "/users/sysadmin/dashboard.php" => "Issuing Keys"
-, "#1" => "View Machine Authorized Keys"
-);  //Todo
+, "/users/sysadmin/authorized_keys.php" => "View Machine Authorized Keys"
+);
 ?>
 
 <ul class="nav nav-pills nav-stacked admin-menu">
