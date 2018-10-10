@@ -8,7 +8,7 @@
 
 final class Machine extends Permission
 {
-    public $id, $machine_name, $administrator_id, $system_administrator_id;
+    private $id, $machine_name, $administrator_id, $system_administrator_id;
 
     function __construct($capabilities, $machineId)
     {
@@ -39,5 +39,21 @@ final class Machine extends Permission
         }
         return $requests;
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getMachineName()
+    {
+        return $this->machine_name;
+    }
+
+    public function getSystemAdministratorId()
+    {
+        return $this->system_administrator_id;
+    }
+
 
 }

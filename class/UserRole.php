@@ -1,6 +1,6 @@
 <?php
 
-abstract class UserRole
+final class UserRole
 {
     const Administrator = 0;
     const SysAdmin = 1;

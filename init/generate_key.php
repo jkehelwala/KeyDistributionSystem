@@ -6,9 +6,8 @@
  * Time: 9:27 AM
  */
 
-// Todo remove file
 include $_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php';
-
+$user->authorizeView("MASTER_ADMIN"); // Inaccessible without access to source code
 $keys = new class extends Crypts
 {
     function __construct()

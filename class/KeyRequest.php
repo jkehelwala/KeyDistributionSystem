@@ -8,13 +8,13 @@
 
 final class KeyRequest extends Permission
 {
-    public $id;
-    public $requesting_user;
-    public $machine;
-    public $key_type;
-    public $responding_admin;
-    public $approved;
-    public $issued;
+    private $id;
+    private $requesting_user;
+    private $machine;
+    private $key_type;
+    private $responding_admin;
+    private $approved;
+    private $issued;
 
     function __construct($capabilities, $request_id)
     {
@@ -59,6 +59,41 @@ final class KeyRequest extends Permission
         $key = new MachineKey($this->capabilities, $this->id);
         $key->initialize();
         return $key;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getRequestingUser()
+    {
+        return $this->requesting_user;
+    }
+
+    public function getMachine()
+    {
+        return $this->machine;
+    }
+
+    public function getKeyType()
+    {
+        return $this->key_type;
+    }
+
+    public function getRespondingAdmin()
+    {
+        return $this->responding_admin;
+    }
+
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+    public function getIssued()
+    {
+        return $this->issued;
     }
 
 }

@@ -11,13 +11,13 @@
     <section class="semi-top-padding">
         <div class="row">
             <div class="col-xs-9">
-                <?php foreach ($machines as $machine) { ?>
+                <?php foreach ($machines as $machine) {  ?>
                     <div class="col-xs-12">
                         <!-- Starting Machine Block-->
                         <div class="col-xs-12 merge-block">
                             <div class="col-xs-12 top full title text-left">
-                                <i class="fa fa-desktop"></i> &nbsp;&nbsp; <?php echo $machine->machine_name; ?>
-                                <span class="badge pull-right"><?php echo $machine->id; ?></span>
+                                <i class="fa fa-desktop"></i> &nbsp;&nbsp; <?php echo $machine->getMachineName(); ?>
+                                <span class="badge pull-right"><?php echo $machine->getId(); ?></span>
                             </div>
                             <div class="col-xs-12 bottom full">
                                 <?php $requests = $machine->getKeyIssuedRequests() ?>

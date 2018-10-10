@@ -30,7 +30,7 @@ try {
     $key_data = $_POST['key'];
     $maintenance_data = $_POST['note'];
 
-    $success = $user->getActions()->addKey($valid_req->id, $key_data, $maintenance_data);
+    $success = $user->getActions()->addKey($valid_req->getId(), $key_data, $maintenance_data);
     if ($success != 1)
         throw new Exception("Key Adding Unsuccessful");
     $message = new AlertMessage(false, "Key Adding Successful");

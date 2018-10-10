@@ -8,8 +8,8 @@
 
 final class MachineKey extends Crypts
 {
-    public $request_id;
-    public $notes;
+    private $request_id;
+    private $notes;
     private $crypt_key;
 
     function __construct($capabilities, $request_id)
@@ -52,6 +52,17 @@ final class MachineKey extends Crypts
         if ($success != 1)
             throw new Exception("Could not add key.");
         return true;
+    }
+
+
+    public function getRequestId()
+    {
+        return $this->request_id;
+    }
+
+    public function getNotes()
+    {
+        return $this->notes;
     }
 
 }

@@ -50,7 +50,7 @@ final class UserSysAdmin extends UserAuth
     public function getAccessibleRequest($id)
     {
         $req = $this->getRequest($id);
-        if ($this->id != $req->machine->system_administrator_id || !$req->approved || $req->issued)
+        if ($this->id != $req->getMachine()->getSystemAdministratorId() || !$req->getApproved() || $req->getIssued())
             throw new Exception("Operation Not Permitted");
         return $req;
     }

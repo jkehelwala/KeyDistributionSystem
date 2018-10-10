@@ -15,7 +15,7 @@ final class Credentials extends Permission
     const DB_NAME = "db";
     const AES_KEY = "aes_key";
     const INITIALIZATION_VECTOR = "iv";
-    const ROLE_MIN_PRIV = "root"; // Todo
+    const ROLE_MIN_PRIV = "root"; // Todo Set a Less Privileged User
 
     private function __construct()
     {

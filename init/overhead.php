@@ -31,7 +31,7 @@ $user = new User();
 if ($_SESSION) {
     if (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
-        $logged = $user->loggedIn;
+        $logged = $user->isLoggedIn();
     }
     unset($_SESSION['msg']);
 }

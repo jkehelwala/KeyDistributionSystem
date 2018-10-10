@@ -1,7 +1,7 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
 // Redirect Logged in User
-if ($user->loggedIn) {
+if ($user->isLoggedIn()) {
     header('location: ' . $user->getDashboardLink());
     exit();
 }

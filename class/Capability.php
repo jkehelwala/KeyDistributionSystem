@@ -1,6 +1,6 @@
 <?php
 
-abstract class Capability
+final class Capability
 {
     // EVERYONE
     const VIEW_MACHINES = 0;

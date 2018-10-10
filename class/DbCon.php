@@ -28,7 +28,7 @@ final class DbCon
         return $instance;
     }
 
-    protected function getReadPriv()
+    private function getReadPriv()
     {
         $cred = Credentials::Instance([]);
         try {
@@ -39,7 +39,7 @@ final class DbCon
         }
     }
 
-    protected function getSpecificPriv($role)
+    private function getSpecificPriv($role)
     {
         $cred = Credentials::Instance([]);
         try {

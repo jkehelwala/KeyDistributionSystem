@@ -16,7 +16,7 @@
                         <!-- Starting Request Block-->
                         <div class="panel panel-primary">
                             <div class="panel-heading"><span class="panel-title"><i class="fa fa-envelope"></i> &nbsp;&nbsp; Key Request</span>
-                                <span class="badge pull-right"><?php echo $keyReq->id; ?></span></div>
+                                <span class="badge pull-right"><?php echo $keyReq->getId(); ?></span></div>
                             <div class="panel-body">
                                 <div class="row">
                                     <?php include($path . '/users/sysadmin/snip_request.php'); ?>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="panel-footer text-right">
                                 <a class="btn btn-success "
-                                   href="/users/sysadmin/add_key.php?id=<?php echo $keyReq->id; ?>">Add Key</a>
+                                   href="/users/sysadmin/add_key.php?id=<?php echo $keyReq->getId(); ?>">Add Key</a>
                             </div>
                         </div>
                     </div>

@@ -2,10 +2,10 @@
 
 final class User
 {
-    public $id;
-    public $loggedIn;
-    protected $username;
-    protected $role;
+    private $id;
+    private $loggedIn;
+    private $username;
+    private $role;
     private $actions = NULL;
 
     // private $password;
@@ -15,6 +15,10 @@ final class User
         $this->loggedIn = false;
     }
 
+    public function isLoggedIn(): bool
+    {
+        return $this->loggedIn;
+    }
 
     function login($uname, $password)
     {

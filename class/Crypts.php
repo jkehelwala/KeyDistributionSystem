@@ -44,7 +44,7 @@ class Crypts extends Permission
         return $this->tag;
     }
 
-    final  protected function setTag($tag)
+    final protected function setTag($tag)
     {
         $this->checkPermission(Capability::ENCRYPT_KEY);
         $this->tag = bin2hex($tag);
