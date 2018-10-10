@@ -36,5 +36,5 @@ if ($_SESSION) {
     unset($_SESSION['msg']);
 }
 //    if (!$logged)
-//        header('location: /index.php?logout=1');
+//        header('location: ' . $user->getLogout());
 ?>

@@ -79,13 +79,19 @@ final class User
         return $user_id;
     }
 
-    public function getDashboardLink(){
+    public function getDashboardLink()
+    {
         return '/users/' . $this->getPartition() . '/dashboard.php';
+    }
+
+    public function getLogout()
+    {
+        return '/index.php?logout=1';
     }
 
     public function authorizeView($view_owner)
     {
-        if (!$this->loggedIn || $this->getRole()!=$view_owner)
+        if (!$this->loggedIn || $this->getRole() != $view_owner)
             throw new Exception("Access Denied");
     }
 

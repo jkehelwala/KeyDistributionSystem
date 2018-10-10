@@ -1,6 +1,7 @@
 <?php
 
-final class AlertMessage{
+final class AlertMessage
+{
     private $isError;
     private $message = null;
 
@@ -10,18 +11,21 @@ final class AlertMessage{
         $this->message = $value;
     }
 
-    public function isError(){
+    public function isError()
+    {
         return $this->isError;
     }
 
-    public function getMessage(){
+    public function getMessage()
+    {
         if ($this->isError)
             return $this->message->getMessage();
         else
             return $this->message; // Success Message
     }
 
-    public function getException(){
+    public function getException()
+    {
         return $this->message;
     }
 

@@ -24,7 +24,7 @@
                     <?php if ($logged) { ?>
                         <li><span>Welcome, <strong><?php echo $user->getUsername() ?>!</strong></span></li>
                         <li><a href="<?php echo $user->getDashboardLink(); ?>">Dashboard</a></li>
-                        <li><a href="/index.php?logout=1">Logout</a></li>
+                        <li><a href="<?php echo $user->getLogout(); ?>">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="/login.php">Login</a></li>
                     <?php } ?>
@@ -37,10 +37,10 @@
     </div> -->
 </header><!-- Header end, Wrapper Start -->
 <div class="container">
-    <?php if($message != null){ ?>
+    <?php if ($message != null) { ?>
         <div class="col-xs-12">
             <div class="col-xs-10 col-xs-offset-1">
-                <?php if($message->isError()){ ?>
+                <?php if ($message->isError()) { ?>
                     <div class="alert alert-danger text-center">
                         <strong><i class="fa fa-times"></i></strong> &nbsp;&nbsp; <?php echo $message->getMessage(); ?>
                     </div>
@@ -52,4 +52,4 @@
             </div>
         </div>
     <?php } ?>
-    <?php $message = null ; ?>
+    <?php $message = null; ?>

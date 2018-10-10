@@ -41,6 +41,6 @@ $requests = $userAc->getRequestsToProcess();
 <?php
 } catch (Exception $e) {
     $_SESSION['msg'] = new AlertMessage(true, $e);
-    header('location: /index.php?logout=1');
+    header('location: ' . $user->getLogout());
 }
 ?>

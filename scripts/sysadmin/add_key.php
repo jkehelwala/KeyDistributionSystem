@@ -38,4 +38,4 @@ if ($success != 1)
     $message = new AlertMessage(true, $e);
 }
 $_SESSION['msg']  = $message;
-header('location: /users/' . $user->getPartition() . '/dashboard.php');
+header('location: ' . $user->getDashboardLink());
