@@ -33,7 +33,7 @@ final class MachineKey extends Crypts
     function initialize()
     {
         $this->checkPermissions(Capability::VIEW_KEY_FOR_REQUEST, Capability::VIEW_MACHINE_AUTHORIZED_KEYS);
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $result = $db->getFirstRow("select enc_key, self_notes, key_hash from key_list where r_id = ?", [$this->request_id]);
         $this->crypt_key = $result['enc_key'];
         $this->notes = $result['self_notes'];
@@ -47,8 +47,10 @@ final class MachineKey extends Crypts
         $this->notes = $notes;
         $sql = 'INSERT INTO key_list (r_id, enc_key, self_notes, key_hash) VALUES (?, ?, ?, ?)';
         $params = [$this->request_id, $this->crypt_key, $this->notes, $this->getTag()];
-        $db = DbCon::minimumPriv();
+        array_push($this->capabilities, Capability::DB_WRITE);
+        $db = DbCon::minimumPriv($this->capabilities);
         $success = $db->runParamQuery($sql, $params);
+        array_pop($this->capabilities);
         if ($success != 1)
             throw new Exception("Could not add key.");
         return true;

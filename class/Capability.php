@@ -3,6 +3,8 @@
 final class Capability
 {
     // EVERYONE
+    const DB_READ = -1;
+    const DB_WRITE = 9;
     const VIEW_MACHINES = 0;
 
     //ADMIN & SYSADMIN

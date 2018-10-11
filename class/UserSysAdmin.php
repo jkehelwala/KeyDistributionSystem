@@ -22,15 +22,15 @@ final class UserSysAdmin extends UserAuth
 
     protected function setCapabilities()
     {
-        $this->capabilities = [Capability::VIEW_MACHINES, Capability::VIEW_REQUESTS,
+        $this->capabilities = [Capability::DB_READ, Capability::VIEW_MACHINES, Capability::VIEW_REQUESTS,
             Capability::VIEW_APPROVED_REQUESTS, Capability::VIEW_MACHINE_AUTHORIZED_KEYS,
-            Capability::ENCRYPT_KEY, Capability::ADD_KEY, Capability::ISSUE_KEY];
+            Capability::ADD_KEY, Capability::ISSUE_KEY];
     }
 
     public function getRequestsToProcess()
     {
         $this->checkPermission(Capability::VIEW_APPROVED_REQUESTS);
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $result = $db->getQueryResult("select r_id from requests where admin_approved=? and key_issued =?", [1, 0]);
         $keyRequests = array();
         foreach ($result as $row) {
@@ -57,8 +57,10 @@ final class UserSysAdmin extends UserAuth
 
     public function addKey($request_id, $key, $maintainer_note)
     {
+        array_push($this->capabilities, Capability::ENCRYPT_KEY);
         $newKey = new MachineKey($this->capabilities, $request_id);
         $success = $newKey->addKey($key, $maintainer_note);
+        array_pop($this->capabilities);
         if (!$success)
             throw new Exception("Operation Failed.");
         $req = new KeyRequest($this->capabilities, $request_id);
@@ -71,15 +73,17 @@ final class UserSysAdmin extends UserAuth
     private function getMachine($id)
     {
         $this->checkPermission(Capability::VIEW_MACHINES);
+        array_push($this->capabilities, Capability::ENCRYPT_KEY);
         $machine = new Machine($this->capabilities, $id);
         $machine->initialize();
+        array_pop($this->capabilities);
         return $machine;
     }
 
     public function getAuthorizedMachines()
     {
         $this->checkPermission(Capability::VIEW_MACHINES);
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $result = $db->getQueryResult("select m_id from machines where sys_admin_id =?", [$this->id]);
         $machines = array();
         foreach ($result as $row) {
