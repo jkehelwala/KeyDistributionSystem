@@ -57,7 +57,7 @@ INSERT INTO `accounts` (`u_id`, `u_name`, `u_role`, `u_pass`) VALUES
 CREATE TABLE IF NOT EXISTS `key_list` (
   `r_id` int(11) NOT NULL,
   `enc_key` text NOT NULL,
-  `self_notes` varchar(300) NOT NULL,
+  `self_notes` text,
   `key_hash` varchar(16) NOT NULL,
   PRIMARY KEY (`r_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -6,31 +6,33 @@ lastEdited: 2014-11-19
 by: JK;
 */
 
-final class DbCon
+final class DbCon extends Permission
 {
     private $con;
 
-    function __construct()
+    function __construct($capabilities)
     {
+        parent::__construct($capabilities);
+        $this->checkPermission(Capability::DB_READ);
     }
 
-    public static function minimumPriv()
+    public static function minimumPriv($capabilities)
     {
-        $instance = new self();
-        $instance->getReadPriv();
+        $instance = new self($capabilities);
+        $instance->getReadPriv($capabilities);
         return $instance;
     }
 
-    public static function specificPriv($role)
+    public static function specificPriv($role, $capabilities)
     {
-        $instance = new self();
-        $instance->getSpecificPriv($role);
+        $instance = new self($capabilities);
+        $instance->getSpecificPriv($role, $capabilities);
         return $instance;
     }
 
-    private function getReadPriv()
+    private function getReadPriv($capabilities)
     {
-        $cred = Credentials::Instance([]);
+        $cred = Credentials::Instance($capabilities);
         try {
             $this->con = new PDO("mysql:host=" . $cred->get(Credentials::HOST) . ";dbname=" . $cred->get(Credentials::DB_NAME),
                 Credentials::ROLE_MIN_PRIV, $cred->get(Credentials::ROLE_MIN_PRIV));
@@ -39,9 +41,9 @@ final class DbCon
         }
     }
 
-    private function getSpecificPriv($role)
+    private function getSpecificPriv($role, $capabilities)
     {
-        $cred = Credentials::Instance([]);
+        $cred = Credentials::Instance($capabilities);
         try {
             $this->con = new PDO("mysql:host=" . $cred->get(Credentials::HOST) . ";dbname=" . $cred->get(Credentials::DB_NAME),
                 $role, $cred->get($role));
@@ -57,6 +59,7 @@ final class DbCon
 
     function runParamQuery($sqlstring, $params)
     {
+        $this->checkPermission(Capability::DB_WRITE);
         $result = $this->con->prepare($sqlstring);
         $success = $result->execute($params);
         if ($success === false) {

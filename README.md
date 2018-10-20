@@ -1,6 +1,6 @@
 # KeyDistributionSystem
 
-**Do not use the Temp branch except for browsing and code extraction. <br> Set up notes for Windows and Linux are at the end of this ReadMe.**
+**Set up notes for Windows and Linux are at the end of this ReadMe.**
 
 ## Coding Notes
 
@@ -25,10 +25,10 @@
 ### Class structure
 
 #### Coding Instructions
-* Public functions and variables, refactoring of JK's current classes to be done.
 * MVC architecture. Views in outer folders. Model in class folder. Control in scripts folder
 * UserAuth inheritance checks according to the user role whether the child class (which can actually perform functions) can be instantiated
 * Capabilities class holds what functions can be performed by which user. These are added in UserAuth sublcass to "capabilities" property. 
+* Some capabilities are given on the go, such as DB Write access and Key encrypting and decrypting capabilities
 * Capabilities property is passed to object functions (KeyRequest, Key add/edit/view etc) when called.
 * Each object function checks the Capabilities property whether it is allowed. (Enum value should be in Capabilities array)
 

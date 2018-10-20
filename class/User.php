@@ -7,11 +7,13 @@ final class User
     private $username;
     private $role;
     private $actions = NULL;
+    private $capabilities;
 
     // private $password;
 
     function __construct()
     {
+        $this->capabilities = [Capability::DB_READ];
         $this->loggedIn = false;
     }
 
@@ -22,7 +24,7 @@ final class User
 
     function login($uname, $password)
     {
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $pass_hash = hash('sha256', $password);
         $query = "SELECT count(*) FROM accounts WHERE u_name=? and u_pass=?";
         $result = $db->getScalar($query, [$uname, $pass_hash]);
@@ -37,7 +39,7 @@ final class User
 
     function initializeUser()
     {
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $result = $db->getFirstRow("select u_id, u_role from accounts where u_name = ?", [$this->username]);
         $this->id = $result['u_id'];
         $this->role = $result['u_role'];
@@ -46,7 +48,7 @@ final class User
 
     function initialize($id)
     {
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $result = $db->getFirstRow("select u_id, u_role, u_name from accounts where u_id = ?", [$id]);
         $this->id = $result['u_id'];
         $this->role = $result['u_role'];
@@ -74,8 +76,10 @@ final class User
         $sql = 'INSERT INTO accounts (u_name, u_role, u_pass) VALUES (?, ?, ?)';
         $params = [$user, $role_int, $pass_hash];
 
-        $db = DbCon::minimumPriv();
+        array_push($this->capabilities, Capability::DB_WRITE);
+        $db = DbCon::minimumPriv($this->capabilities);
         $success = $db->runParamQuery($sql, $params);
+        array_pop($this->capabilities);
         if ($success != 1)
             throw new Exception("Registration Unsuccessful");
 
