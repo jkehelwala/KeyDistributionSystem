@@ -15,7 +15,7 @@ final class User
         $this->loggedIn = false;
     }
 
-    public function isLoggedIn(): bool
+    public function isLoggedIn()
     {
         return $this->loggedIn;
     }
@@ -97,6 +97,11 @@ final class User
     {
         if (!$this->loggedIn || $this->getRole() != $view_owner)
             throw new Exception("Access Denied");
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getRole()

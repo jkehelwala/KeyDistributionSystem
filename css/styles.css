@@ -35,12 +35,14 @@ ul.admin-menu li a {
     line-height: 30px;
 }
 
-.merge-block .top, .merge-block .bottom {
+.merge-block .top,
+.merge-block .bottom {
     padding: 5px;
     transition: background-color 50ms;
 }
 
-.merge-block:hover .top, .merge-block:hover .bottom {
+.merge-block:hover .top,
+.merge-block:hover .bottom {
     transition: background-color 50ms;
 }
 
@@ -50,7 +52,9 @@ ul.admin-menu li a {
     border-radius: 5px 0 0 5px;
 }
 
+
 /* */
+
 .merge-block .bottom {
     background-color: rgb(245, 245, 245);
     border-radius: 0 5px 5px 0;
@@ -75,4 +79,42 @@ ul.admin-menu li a {
 
 .merge-block .bottom.full {
     border-radius: 0 0 5px 5px;
+}
+
+
+/*Stsyles for Admin*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 20% auto auto;
+    background-color: #f2f2f2;
+    grid-gap: 5px;
+    padding: 5px;
+}
+
+.grid-item-header {
+    background-color: #99c2ff;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.grid-item input[type=submit] {
+    background-color: #4d94ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.grid-item input[type=submit]:hover {
+    background-color: #006699;
 }

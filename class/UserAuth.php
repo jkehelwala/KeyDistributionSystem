@@ -26,7 +26,7 @@ abstract class UserAuth extends Permission
                 $userAuth = new UserSysAdmin($role, $id);
                 break;
             case UserRole::Administrator:
-                # Todo
+                $userAuth = new UserAdmin($role, $id);
                 break;
             case UserRole::MachineUser:
                 # Todo
