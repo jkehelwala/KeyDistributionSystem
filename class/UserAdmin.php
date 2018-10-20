@@ -31,7 +31,7 @@ final class UserAdmin extends UserAuth
     public function getRequestsToProcess()
     {
         $this->checkPermission(Capability::VIEW_REQUESTS);
-        $db = DbCon::minimumPriv();
+        $db = DbCon::minimumPriv($this->capabilities);
         $result = $db->getQueryResult("select * from requests where admin_u_id = ?", [1]);
         $keyRequests = array();        
         foreach ($result as $row) {
