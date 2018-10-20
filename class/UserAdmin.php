@@ -23,7 +23,7 @@ final class UserAdmin extends UserAuth
     // set capabilities for Administrator 
     protected function setCapabilities()
     {
-        $this->capabilities = [Capability::VIEW_MACHINES, Capability::VIEW_REQUESTS,
+        $this->capabilities = [Capability::DB_READ,Capability::VIEW_MACHINES, Capability::VIEW_REQUESTS,
             Capability::VIEW_MACHINE_AUTHORIZED_USERS,Capability::APPROVE_REQUEST,Capability::ADD_MACHINE];
     }
 
@@ -32,7 +32,8 @@ final class UserAdmin extends UserAuth
     {
         $this->checkPermission(Capability::VIEW_REQUESTS);
         $db = DbCon::minimumPriv($this->capabilities);
-        $result = $db->getQueryResult("select * from requests where admin_u_id = ?", [1]);
+        //TODO:and admin_approved is null
+        $result = $db->getQueryResult("select * from requests where admin_u_id = ? ", [1]);
         $keyRequests = array();        
         foreach ($result as $row) {
             array_push($keyRequests, $this->getRequest($row['r_id']));

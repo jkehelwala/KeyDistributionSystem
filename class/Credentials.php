@@ -17,7 +17,8 @@ final class Credentials extends Permission
     const INITIALIZATION_VECTOR = "iv";
     const ROLE_MIN_PRIV = "root"; // Todo Set a Less Privileged User
 
-    private function __construct()
+    //TODO:
+    protected function __construct()
     {
         parent::__construct([]);
         // Todo Must be set to absolute Path placed outside DOCUMENT_ROOT

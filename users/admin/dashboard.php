@@ -11,8 +11,8 @@
     <!--dash board row header-->    
     <section class="grid-container">
         <div class="grid-item-header"> Req.Id </div>
-        <div class="grid-item-header"> UserId </div>
-        <div class="grid-item-header"> MachineId </div>
+        <div class="grid-item-header"> UserName </div>
+        <div class="grid-item-header"> Machine </div>
         <div class="grid-item-header"> KeyType </div>
         <div class="grid-item-header"> Status </div>
         <div class="grid-item-header"> Submit </div>             
@@ -21,8 +21,8 @@
     <section class="grid-container">
     <?php foreach ($requests as $keyReq) { ?> 
         <div class="grid-item"> <?php echo $keyReq->getId(); ?> </div>
-        <div class="grid-item"> <?php echo $keyReq->getRequestingUser()->getId();?> </div>
-        <div class="grid-item"> <?php echo $keyReq->getMachine()->getId();?> </div>
+        <div class="grid-item"> <?php echo $keyReq->getRequestingUser()->getUsername();?> </div>
+        <div class="grid-item"> <?php echo $keyReq->getMachine()->getMachineName();?> </div>
         <div class="grid-item"> <?php echo $keyReq->getKeyType();?> </div>
         <div class="grid-item"> 
             <select id="status" name="status">
@@ -33,6 +33,8 @@
             </select>
         </div>
         <div class="grid-item"> 
+            <!-- TODO: SCRIPT/ADDKEY   -->
+            <!-- TODO: ADD MACHINE PART -->
             <input type="submit" value="Submit" name="submitkey">
             <?php  ?>
         </div>   
