@@ -1,5 +1,12 @@
 # KeyDistributionSystem
 
+This is a key distribution system where regular users who are supposed to be developers can request keys to access machines. This will be approved by admins and then keys are created by sysadmins. 
+The system has 3 types of Users. 
+1.	Regular Users - Usually developers. They request keys from the system. Available machines are displayed so the users can request for a key of a specific type. 
+2.	Administrator - Usually Team Leaders/ Scrum Masters. They are allowed to view the requests put by developer for the machines/servers they are in charge of.  They can approve or deny these requests.
+3.	System Administrator - Usually Devops Personnel. They can view requests approved by administrators for the machines they are responsible of, and issue respective keys. They can also save maintenance notes along with a key for future reference. 
+
+
 **Set up notes for Windows and Linux are at the end of this ReadMe.**
 
 ## Coding Notes
