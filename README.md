@@ -9,6 +9,11 @@ The system has 3 types of Users.
 
 **Set up notes for Windows and Linux are at the end of this ReadMe.**
 
+## Security -Todos
+
+* Session Fixation Fixes - https://stackoverflow.com/a/5081453/3132503 (Most have to be configured using php.ini)
+    * Session ID regen after loging out was added. 
+
 ## Coding Notes
 
 * Check following before merging with master, and update your database accordingly
