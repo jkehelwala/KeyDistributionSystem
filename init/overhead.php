@@ -19,8 +19,9 @@ if ($_GET) {
             session_unset();
             session_destroy();
             session_start();
+            session_regenerate_id(true);
             $_SESSION['msg'] = $message;
-            //header('location: /index.php');
+            //header('location: /index.php'); // Todo
             exit();
         }
     }
