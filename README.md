@@ -13,6 +13,7 @@ The system has 3 types of Users.
 
 * Session Fixation Fixes - https://stackoverflow.com/a/5081453/3132503 (Most have to be configured using php.ini)
     * Session ID regen after loging out was added. 
+    * Can also change Session Name from PHPSESSID
 
 ## Coding Notes
 
