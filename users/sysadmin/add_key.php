@@ -58,8 +58,7 @@ try {
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-lg btn-block btn-success" name="addkey" value="1"
-                                                type="submit">Add
-                                            Key
+                                                type="submit">Add Key
                                         </button>
                                     </div>
                                 </form>

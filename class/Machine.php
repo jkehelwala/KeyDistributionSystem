@@ -50,6 +50,10 @@ final class Machine extends Permission
         return $this->machine_name;
     }
 
+    public function getAdministratorId(){
+        return $this->administrator_id;
+    }
+
     public function getSystemAdministratorId()
     {
         return $this->system_administrator_id;

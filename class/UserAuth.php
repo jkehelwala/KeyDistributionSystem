@@ -29,7 +29,7 @@ abstract class UserAuth extends Permission
                 $userAuth = new UserAdmin($role, $id);
                 break;
             case UserRole::MachineUser:
-                # Todo
+                $userAuth = new UserRegular($role, $id);    // done
                 break;
         }
         return $userAuth;

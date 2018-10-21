@@ -27,7 +27,7 @@
         <div class="grid-item"> 
             <select id="status" name="status">
                 <option value="" disabled selected>Select</option>
-                <option value="1">Approved</option>
+                <option value="1">Approve</option>
                 <option value="0">Reject</option> 
                 <option value="null">Revoke</option>      
             </select>
