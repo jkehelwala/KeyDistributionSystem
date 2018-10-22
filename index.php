@@ -21,6 +21,9 @@ $title = 'Key Distribution'; //define page title
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                     <a class="btn btn-lg btn-success btn-block" href="/login.php">Log in</a>
                 </div>
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <a class="btn btn-lg btn-success btn-block" style="margin-top:10px;" href="/register.php">Register</a>
+                </div>
 
             </div> <!-- /.col-xs-12 -->
         </div> <!-- /.row -->

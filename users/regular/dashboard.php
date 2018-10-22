@@ -13,7 +13,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
     <section><h3><?php echo $user->getRoleName() ?> Dashboard</h3></section>
     <!--dash board row header-->   
     
-    <!-- new code -->
+    
     <div class="col-xs-9">
         <div class="col-xs-12">
             <div class="col-xs-12 merge-block">
@@ -27,13 +27,10 @@ include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
                         <div class="bottom">No Machines</div>
                     </div>
                     <?php } else { ?>
-                    <?php foreach ($macRequests as $machine) {
-                            $counter += 1;?>
-                        <form action=<?php echo "../../scripts/regular/machine_req_add.php?mid=" . $machine->getId(); ?> method="post">
+                        <form action=<?php echo "../../scripts/regular/machine_req_add.php"; ?> method="post">
                         <?php include('snip_request_key.php'); ?>
                         </form>
-                    <?php }
-                        } ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -41,7 +38,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
     <div class="col-xs-3">
         <?php include($path . '/users/regular/snip_menu.php'); ?>
     </div>
-    <!-- new code -->
+    
 
     <?php /*?>
     <?php foreach ($macRequests as $machine) { ?>

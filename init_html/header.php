@@ -27,6 +27,7 @@
                         <li><a href="<?php echo $user->getLogout(); ?>">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="/login.php">Login</a></li>
+                        <li><a href="/register.php">Register</a></li>
                     <?php } ?>
                 </ul>
             </div><!-- /.navbar-collapse -->

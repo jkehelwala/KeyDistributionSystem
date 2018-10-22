@@ -1,6 +1,4 @@
-<?php
-//@author:NiroshJ
- include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
 <?php try { ?>
     <?php $user->authorizeView(UserRole::MachineUser); ?>
     <?php
@@ -26,9 +24,9 @@
                     </div>
                     <?php } else { ?>
                     <?php foreach ($issuedReq as $req) { 
-                        $m_name = $req[0];
-                        $mk = $req[1];
-                        include('snip_issued_key.php');
+                        $mac = $req[0];             // maching object
+                        $mk = $req[1];              // machine key object
+                        include('snip_issued_key.php');         // view file
                     ?>
                     <?php }
                         } ?>
@@ -36,6 +34,7 @@
             </div>
         </div>
     </div>
+    <!-- include strip menu -->
     <div class="col-xs-3">
         <?php include($path . '/users/regular/snip_menu.php'); ?>
     </div>

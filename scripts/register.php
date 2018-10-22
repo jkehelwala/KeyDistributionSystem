@@ -1,15 +1,17 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
-if (isset($_GET)) {
-    $uname = $_GET['uname'];
-    $pass = $_GET['pass'];
-    $role = $_GET['role'];
+if (isset($_POST)) {
+    $uname = $_POST['uname'];
+    $pass = $_POST['pass'];
+    $role = $_POST['role'];
 }
 
 $uname = htmlspecialchars($uname);
 $pass = htmlspecialchars($pass);
 $role_int = htmlspecialchars($role);
-
+echo $uname;
+echo $pass;
+echo $role_int;
 $user = new User();
 try {
     $result = $user->registration($uname, $pass, $role_int);

@@ -50,4 +50,17 @@ final class UserAdmin extends UserAuth
         $req->initialize();
         return $req;
     }
+
+    public function changeKeyStatus($request_id, $status){
+        $this->checkPermission(Capability::APPROVE_REQUEST);
+        $sql = "UPDATE requests SET admin_approved=? WHERE r_id=?";
+        $params = [$status, $request_id];
+        array_push($this->capabilities, Capability::DB_WRITE);
+        $db = DbCon::minimumPriv($this->capabilities);
+        $success = $db->runParamQuery($sql, $params);
+        array_pop($this->capabilities);
+        if ($success != 1)
+            throw new Exception("Key could not be approved!");
+        return true;
+    }
 }

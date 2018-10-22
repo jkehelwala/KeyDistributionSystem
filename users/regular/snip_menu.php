@@ -1,4 +1,9 @@
 <?php
+/**
+ * Snip menu for Regular user
+ */
+?>
+<?php
 $active_url = $_SERVER['PHP_SELF'];
 $menu_links = array(
     $user->getDashboardLink() => "Request Key"

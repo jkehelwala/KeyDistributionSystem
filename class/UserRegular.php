@@ -1,6 +1,7 @@
 <?php
-//@author: NiroshJ
-
+/**
+ * @author:NiroshJ
+*/
 final class UserRegular extends UserAuth
 {
     // If implemented, must call parent!
@@ -57,15 +58,17 @@ final class UserRegular extends UserAuth
     public function getKeyIssuedRequests(){
         $this->checkPermissions(Capability::VIEW_KEY_FOR_REQUEST);
         $db = DbCon::minimumPriv($this->capabilities);
-        $result = $db->getQueryResult("SELECT r.r_id, m.m_name FROM machines as m, requests as r WHERE r.m_id=m.m_id AND r.u_id=? AND r.admin_approved=? AND r.key_issued=?", [$this->id, 1, 1]);
+        $result = $db->getQueryResult("SELECT r_id, m_id FROM requests WHERE u_id=? AND admin_approved=? AND key_issued=?", [$this->id, 1, 1]);
         $issuedReq = array();
         array_push($this->capabilities, Capability::DECRYPT_AUTHORIZED_KEY);
         array_push($this->capabilities, Capability::ENCRYPT_KEY);
         foreach($result as $row){
             $mk = new MachineKey($this->capabilities, $row["r_id"]);
             $mk->initialize();
+            $mac = new Machine($this->capabilities, $row["m_id"]);
+            $mac->initialize();
             $temp = array();
-            array_push($temp, $row["m_name"]);
+            array_push($temp, $mac);
             array_push($temp, $mk);
             array_push($issuedReq, $temp);
         }
