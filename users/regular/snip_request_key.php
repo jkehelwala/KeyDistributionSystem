@@ -1,10 +1,10 @@
 <?php
-    /**
-	 * @author: NiroshJ
-     * interface for making request for key for
-     * specific machine.
-     * It is called in user/regular/dashboard.php 
-     */
+/**
+ * @author [NiroshJ]
+ * @desc [view for specifically designed for making request 
+ *      for machines.
+ *      Called in dashboard.php]
+*/
 ?>
 <div class="col-xs-15">
     <div class="panel panel-default">

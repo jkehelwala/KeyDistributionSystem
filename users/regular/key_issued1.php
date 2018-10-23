@@ -1,3 +1,9 @@
+<?php
+/**
+ * @author [NiroshJ]
+ * @desc [View for showing the issued keys for machines]
+*/
+?>
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php'); ?>
 <?php try { ?>
     <?php $user->authorizeView(UserRole::MachineUser); ?>
@@ -10,6 +16,7 @@
     <section><h3><?php echo $user->getRoleName() ?> Dashboard</h3></section>
     <!--dash board row header-->   
 
+    <!-- start showing the issued keys -->
     <div class="col-xs-9">
         <div class="col-xs-12">
             <div class="col-xs-12 merge-block">
@@ -24,9 +31,9 @@
                     </div>
                     <?php } else { ?>
                     <?php foreach ($issuedReq as $req) { 
-                        $mac = $req[0];             // maching object
-                        $mk = $req[1];              // machine key object
-                        include('snip_issued_key.php');         // view file
+                        $mac = $req[0];
+                        $mk = $req[1];
+                        include('snip_issued_key.php');
                     ?>
                     <?php }
                         } ?>
@@ -34,10 +41,13 @@
             </div>
         </div>
     </div>
-    <!-- include strip menu -->
+    <!-- end showing the issued keys -->
+
+    <!-- including the snip menu -->
     <div class="col-xs-3">
         <?php include($path . '/users/regular/snip_menu.php'); ?>
     </div>
+    
     <!-- include footer -->
     <?php include($path . '/init_html/footer.php'); ?>
     <?php

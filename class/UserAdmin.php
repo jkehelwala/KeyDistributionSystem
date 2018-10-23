@@ -53,8 +53,28 @@ final class UserAdmin extends UserAuth
 
     public function changeKeyStatus($request_id, $status){
         $this->checkPermission(Capability::APPROVE_REQUEST);
-        $sql = "UPDATE requests SET admin_approved=? WHERE r_id=?";
-        $params = [$status, $request_id];
+        switch($status){
+            case 1:
+                $sql = "UPDATE requests SET admin_approved=? WHERE r_id=?";
+                $params = [$status, $request_id];
+                return $this->dbWrite($sql, $params);
+                break;
+            case 2:
+                $sql = "DELETE FROM requests WHERE r_id=?";
+                $params = [$request_id];
+                $firstResult = $this->dbWrite($sql, $params);
+                $sql = "DELETE FROM key_list WHERE r_id=?";
+                return $this->dbWrite($sql, $params) && $firstResult;
+                break;
+            case 0:
+                $sql = "DELETE FROM requests WHERE r_id=?";
+                $params = [$request_id];
+                return $this->dbWrite($sql, $params);
+        }
+        return false;
+    }
+
+    private function dbWrite($sql, $params){
         array_push($this->capabilities, Capability::DB_WRITE);
         $db = DbCon::minimumPriv($this->capabilities);
         $success = $db->runParamQuery($sql, $params);

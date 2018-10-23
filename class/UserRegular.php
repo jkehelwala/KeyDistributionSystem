@@ -1,6 +1,8 @@
 <?php
 /**
- * @author:NiroshJ
+ * @author [NiroshJ]
+ * @desc [The class mimics the behavior of regular user
+ *      who can request the keys for machines available]
 */
 final class UserRegular extends UserAuth
 {
@@ -24,6 +26,13 @@ final class UserRegular extends UserAuth
                                 Capability::VIEW_AUTHORIZED_REQUESTS, Capability::VIEW_KEY_FOR_REQUEST];
     }
 
+    /**
+     * @param requestId id of the requested machine
+     * @param keyType type of the key
+     * @return boolean true for success or false for failure
+     * @desc [the method will add the entry in requests table
+     *      for requesting the key for a machine]
+     */
     public function addRequest($requestId, $keyType){
         $this->checkPermissions(Capability::ADD_REQUEST);
         $sql = "INSERT INTO requests (u_id, m_id, key_type, admin_u_id, key_issued) VALUES (?, ?, ?, ?, ?)";
@@ -37,6 +46,10 @@ final class UserRegular extends UserAuth
         return true;
     }
 
+    /**
+     * @return macRequests array of Machine instances
+     * @desc [the method returns all the machines available]
+     */
     public function getMachines(){
         $this->checkPermissions(Capability::VIEW_MACHINES);
         $db = DbCon::minimumPriv($this->capabilities);
@@ -48,6 +61,12 @@ final class UserRegular extends UserAuth
         return $macRequests;
     }
 
+    /**
+     * @param id the id of the machine
+     * @return mac initialized Machine instance
+     * @desc [private helper method and return the 
+     *      initialized instance of Machine]
+     */
     private function getMachine($id){
         $this->checkPermissions(Capability::VIEW_MACHINES);
         $mac = new Machine($this->capabilities, $id);
@@ -55,6 +74,11 @@ final class UserRegular extends UserAuth
         return $mac;
     }
 
+    /**
+     * @return issuedReq array containing MachineKey and Machine objects
+     * @desc [method will return the Machine and MachineKey initialized
+     *        instances whose keys are issued by Sys Admin]
+     */
     public function getKeyIssuedRequests(){
         $this->checkPermissions(Capability::VIEW_KEY_FOR_REQUEST);
         $db = DbCon::minimumPriv($this->capabilities);

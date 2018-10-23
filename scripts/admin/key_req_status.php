@@ -1,13 +1,13 @@
 <?php
 /**
- * script for changing the status of requests
- * by the administrator
+ * Created by NiroshJ.
  */
 
 include($_SERVER['DOCUMENT_ROOT'] . '/init/overhead.php');
 try {
     $user->authorizeView(UserRole::Administrator);
 
+    // start getting the required variables
     $request_id = NULL;
     if (!$_GET)
         throw new Exception("Required variables not set");
@@ -25,11 +25,14 @@ try {
         throw new Exception("Required variables not set");
     
     $status = $_POST["status"];
+    
+    // end getting the required variables
 
+    // changing the status of request made by regular user
     $success = $user->getActions()->changeKeyStatus($request_id, $status);
     if ($success != 1)
-        throw new Exception("Key could not be approved!");
-    $message = new AlertMessage(false, "Key successfully approved");
+        throw new Exception("Action Unsuccessful");
+    $message = new AlertMessage(false, "Action Successful");
 } catch (Exception $e) {
     $message = new AlertMessage(true, $e);
 }

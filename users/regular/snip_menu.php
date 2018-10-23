@@ -1,7 +1,8 @@
 <?php
 /**
- * Snip menu for Regular user
- */
+ * @author [NiroshJ]
+ * @desc [snip menu for navigating in the dashboard]
+*/
 ?>
 <?php
 $active_url = $_SERVER['PHP_SELF'];

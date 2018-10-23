@@ -1,10 +1,11 @@
 <?php
 /**
- * @author:NiroshJ
- * show the machine information with
- * the issued key and notes
- */
+ * @author [NiroshJ]
+ * @desc [specifically designed for showing keys
+ *        Called in key_issued1.php]
+*/
 ?>
+
 <div class="col-xs-6">
     <div class="panel panel-default">
         <div class="panel-heading">
