@@ -23,7 +23,7 @@ final class UserRegular extends UserAuth
     protected function setCapabilities()
     {
         $this->capabilities = [Capability::DB_READ, Capability::VIEW_MACHINES, Capability::ADD_REQUEST,
-                                Capability::VIEW_AUTHORIZED_REQUESTS, Capability::VIEW_KEY_FOR_REQUEST];
+                                Capability::VIEW_AUTHORIZED_REQUESTS, Capability::VIEW_KEY_FOR_REQUEST, Capability::VIEW_REQUESTS];
     }
 
     /**
@@ -91,9 +91,12 @@ final class UserRegular extends UserAuth
             $mk->initialize();
             $mac = new Machine($this->capabilities, $row["m_id"]);
             $mac->initialize();
+            $req = new KeyRequest($this->capabilities,  $row["r_id"]);
+            $req->initialize();
             $temp = array();
             array_push($temp, $mac);
             array_push($temp, $mk);
+            array_push($temp, $req);
             array_push($issuedReq, $temp);
         }
         array_pop($this->capabilities);

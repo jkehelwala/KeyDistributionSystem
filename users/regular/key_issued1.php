@@ -33,6 +33,7 @@
                     <?php foreach ($issuedReq as $req) { 
                         $mac = $req[0];
                         $mk = $req[1];
+                        $actualReq = $req[2];
                         include('snip_issued_key.php');
                     ?>
                     <?php }
