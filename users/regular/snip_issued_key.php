@@ -28,7 +28,7 @@
                 <div class="col-xs-12 merge-block">
                     <div class="col-xs-12 top full title"><i class="fa fa-unlock"></i> &nbsp;&nbsp; <span
                                 class="small"> Issued Key </span></div>
-                    <div class="col-xs-12 bottom full"><?php echo $mk->getKey();  ?></div>
+                    <div class="col-xs-12 bottom full"><?php echo nl2br($mk->getKey());  ?></div>
                 </div>
             </div>
         </div>
